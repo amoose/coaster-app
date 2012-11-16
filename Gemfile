@@ -8,6 +8,7 @@ gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'geocoder'
 
 group :development do
   gem 'sqlite3'
