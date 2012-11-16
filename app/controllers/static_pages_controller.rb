@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
+    @stations = Station.all
+    @zones = Zone.all
+    @users = User.all
     if signed_in?
 
     end

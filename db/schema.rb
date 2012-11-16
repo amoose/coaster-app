@@ -14,12 +14,13 @@
 ActiveRecord::Schema.define(:version => 20121115234008) do
 
   create_table "geolocations", :force => true do |t|
-    t.string   "lat"
-    t.string   "lon"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
     t.integer  "geocodeable_id"
     t.string   "geocodeable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "stations", :force => true do |t|
