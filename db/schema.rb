@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115234008) do
+ActiveRecord::Schema.define(:version => 20121116202048) do
 
   create_table "geolocations", :force => true do |t|
     t.float    "latitude"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20121115234008) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "address"
+    t.integer  "zone_id"
   end
 
   create_table "users", :force => true do |t|

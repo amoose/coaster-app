@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: geolocations
+#
+#  id               :integer          not null, primary key
+#  latitude         :float
+#  longitude        :float
+#  address          :string(255)
+#  geocodeable_id   :integer
+#  geocodeable_type :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
