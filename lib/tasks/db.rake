@@ -1,7 +1,8 @@
 namespace :db do
   desc "Drop, create, migrate then seed the database"
   task :seed => :environment do
-    Rake::Task['db:drop'].invoke
+    #Rake::Task['db:drop'].invoke
+    Rake::Task['db:setup'].invoke
     Rake::Task['db:create'].invoke
     Rake::Task['db:migrate'].invoke
     #Rake::Task['db:fixtures:load'].invoke
@@ -18,8 +19,6 @@ namespace :db do
     Station.create(:name => 'Old Town (San Diego)', :address => '4005 Taylor St.', :city => 'San Diego', :state => 'CA', :zip => '92110', :zone => Zone.last)
     Station.create(:name => 'Sante Fe Depot (San Diego)', :address => '1050 Kettner Blvd.', :city => 'San Diego', :state => 'CA', :zip => '92101', :zone => Zone.last)
 
-    Station.first.zone = Zone.first
-    Station.first.save
 
     User.create(:name => 'amos', :email => 'amos@amosarts.com', :password => 'fooper', :password_confirmation => 'fooper', :admin => true)
   end
