@@ -17,7 +17,7 @@ class Station < ActiveRecord::Base
   attr_accessible :address, :city, :name, :state, :zip, :zone
   belongs_to :zone
   has_one :geolocation, :as => :geocodeable
-
+  has_many :trains
   before_save :set_geolocation
 
   def full_address

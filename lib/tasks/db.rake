@@ -20,6 +20,7 @@ namespace :db do
     Station.create(:name => 'Sante Fe Depot (San Diego)', :address => '1050 Kettner Blvd.', :city => 'San Diego', :state => 'CA', :zip => '92101', :zone => Zone.last)
 
 
+
     User.create(:name => 'amos', :email => 'amos@amosarts.com', :password => 'fooper', :password_confirmation => 'fooper', :admin => true)
   end
 end
