@@ -5,7 +5,9 @@ class StaticPagesController < ApplicationController
     @zones = Zone.all
     @users = User.all
     if signed_in?
-
+      params[:station_id] || = Station.first.id
+      @station = Station.find(params[:station_id])
+      @trains = @station.trains
     end
   end
 

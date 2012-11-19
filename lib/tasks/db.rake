@@ -8,7 +8,7 @@ namespace :db do
     #Rake::Task['db:fixtures:load'].invoke
     Zone.create(:name => 'Zone 1 (Oceanside-Solana Beach)')
     Zone.create(:name => 'Zone 2 (Sorrento Valley)')
-    Zone.create(:name => 'Zone 3 (Old Town-Santa Fe Depot')
+    Zone.create(:name => 'Zone 3 (Old Town-Santa Fe Depot)')
 
     Station.create(:name => 'Oceanside Transit Center', :address => '195 S. Tremont St.', :city => 'Oceanside', :state => 'CA', :zip => '92054', :zone => Zone.first)
     Station.create(:name => 'Carlsbad Village', :address => '2775 State St.', :city => 'Carlsbad', :state => 'CA', :zip => '92008', :zone => Zone.first)

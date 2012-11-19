@@ -15,3 +15,4 @@
 /tmp
 
 /.ssh
+.DS_Store
