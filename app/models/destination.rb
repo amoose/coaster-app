@@ -21,11 +21,11 @@ class Destination < ActiveRecord::Base
   before_save :set_geolocation
   belongs_to :user
 
-  def full_address
+  def long_address
   	address = self.address1 + ' ' + self.address2 + ', ' + self.city + ', ' + self.zip
   end
 
   def set_geolocation
-  	self.geolocation ||= Geolocation.new(:address => self.full_address)
+  	self.geolocation ||= Geolocation.new(:address => self.long_address)
   end
 end
