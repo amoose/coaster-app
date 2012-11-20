@@ -7,6 +7,8 @@
 
     	<%= render 'shared/error_messages', object: f.object %>
 
+      <%= f.hidden_field :ip_address, :value => request.remote_ip %>
+
       <%= f.label :name %>
       <%= f.text_field :name %>
 

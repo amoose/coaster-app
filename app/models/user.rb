@@ -14,7 +14,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :admin
+  attr_accessible :email, :name, :password, :password_confirmation, :admin, :ip_address
 
   has_secure_password
 
@@ -27,11 +27,17 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  has_one :geolocation, :as => :geocodeable
+  before_save :set_geolocation
   has_many :destinations
 
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def set_geolocation
+      self.geolocation = Geolocation.new(:address => self.ip_address) unless self.ip_address.nil?
     end
 
 end
