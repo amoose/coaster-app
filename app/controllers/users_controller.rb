@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
 
   def new
-  	@user = User.new
+  	@user = User.new :city => request.location.city
   end
 
   def index

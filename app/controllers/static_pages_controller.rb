@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @stations = Station.all
     @trains = Station.first.trains
     @zones = Zone.all
     @users = User.all

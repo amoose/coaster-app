@@ -1,4 +1,6 @@
 class DestinationsController < ApplicationController
+  before_filter :signed_in_user
+  before_filter :correct_user,   only: [:edit, :update]
   # GET /destinations
   # GET /destinations.json
   def index
@@ -24,7 +26,7 @@ class DestinationsController < ApplicationController
   # GET /destinations/new
   # GET /destinations/new.json
   def new
-    @destination = Destination.new :user => current_user
+    @destination = Destination.new :user => current_user, :city => request.location.city
 
     respond_to do |format|
       format.html # new.html.erb
