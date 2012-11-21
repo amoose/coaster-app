@@ -24,7 +24,7 @@ class DestinationsController < ApplicationController
   # GET /destinations/new
   # GET /destinations/new.json
   def new
-    @destination = Destination.new
+    @destination = Destination.new :user => current_user
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:edit, :update, :index, :destroy]
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :correct_user,   only: [:edit, :update, :show]
   before_filter :admin_user,     only: :destroy
 
 	def show
@@ -42,6 +42,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_geolocation
+    @user = User.find(params[:id])
+    @user.geolocation = Geolocation.new :latitude => params[:latitude], :longitude => params[:longitude]
+    @user.geolocation.save :validate => false  # skip the auto-geocode in geolocation model
+    render json: @user.geolocation
+  end
+
   def destroy
     User.find(params[:id]).destroy unless current_user?(User.find(params[:id]))
     flash[:success] = "User destroyed."
@@ -49,14 +56,14 @@ class UsersController < ApplicationController
   end
 
 
-  private
+  # private
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
+  #   def correct_user
+  #     @user = User.find(params[:id])
+  #     redirect_to(root_path) unless current_user?(@user)
+  #   end
 
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
-    end
+  #   def admin_user
+  #     redirect_to(root_path) unless current_user.admin?
+  #   end
 end

@@ -5,7 +5,7 @@ Coaster::Application.routes.draw do
   # first created -> highest priority.
 
   resources :users
-
+  match '/users/:id/update_geolocation', to: 'users#update_geolocation'
   resources :sessions,        only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
