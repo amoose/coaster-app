@@ -19,17 +19,17 @@ namespace :db do
     Station.create(:name => 'Old Town (San Diego)', :address => '4005 Taylor St.', :city => 'San Diego', :state => 'CA', :zip => '92110', :zone => Zone.last)
     Station.create(:name => 'Sante Fe Depot (San Diego)', :address => '1050 Kettner Blvd.', :city => 'San Diego', :state => 'CA', :zip => '92101', :zone => Zone.last)
 
-    Train.create(:name => '630', :departure_time => Time.zone.local(2012,11,20,5,15), :direction => 'S', :station => Station.first)
-    Train.create(:name => '634', :departure_time => Time.zone.local(2012,11,20,6,00), :direction => 'S', :station => Station.first)
-    Train.create(:name => '636', :departure_time => Time.zone.local(2012,11,20,6,41), :direction => 'S', :station => Station.first)
-    Train.create(:name => '638', :departure_time => Time.zone.local(2012,11,20,7,17), :direction => 'S', :station => Station.first)
-    Train.create(:name => '640', :departure_time => Time.zone.local(2012,11,20,7,42), :direction => 'S', :station => Station.first)
-    Train.create(:name => '644', :departure_time => Time.zone.local(2012,11,20,9,21), :direction => 'S', :station => Station.first)
-    Train.create(:name => '648', :departure_time => Time.zone.local(2012,11,20,11,05), :direction => 'S', :station => Station.first)
-    Train.create(:name => '654', :departure_time => Time.zone.local(2012,11,20,14,35), :direction => 'S', :station => Station.first)
-    Train.create(:name => '656', :departure_time => Time.zone.local(2012,11,20,15,34), :direction => 'S', :station => Station.first)
-    Train.create(:name => '660', :departure_time => Time.zone.local(2012,11,20,17,04), :direction => 'S', :station => Station.first)
-    Train.create(:name => '662', :departure_time => Time.zone.local(2012,11,20,17,4), :direction => 'S', :station => Station.first)
+    Train.create(:name => '630', :departure_time => Time.zone.local(2014,11,20,5,15), :direction => 'S', :station => Station.first)
+    Train.create(:name => '634', :departure_time => Time.zone.local(2014,11,20,6,00), :direction => 'S', :station => Station.first)
+    Train.create(:name => '636', :departure_time => Time.zone.local(2014,11,20,6,41), :direction => 'S', :station => Station.first)
+    Train.create(:name => '638', :departure_time => Time.zone.local(2014,11,20,7,17), :direction => 'S', :station => Station.first)
+    Train.create(:name => '640', :departure_time => Time.zone.local(2014,11,20,7,42), :direction => 'S', :station => Station.first)
+    Train.create(:name => '644', :departure_time => Time.zone.local(2014,11,20,9,21), :direction => 'S', :station => Station.first)
+    Train.create(:name => '648', :departure_time => Time.zone.local(2014,11,20,11,05), :direction => 'S', :station => Station.first)
+    Train.create(:name => '654', :departure_time => Time.zone.local(2014,11,20,14,35), :direction => 'S', :station => Station.first)
+    Train.create(:name => '656', :departure_time => Time.zone.local(2014,11,20,15,34), :direction => 'S', :station => Station.first)
+    Train.create(:name => '660', :departure_time => Time.zone.local(2014,11,20,17,04), :direction => 'S', :station => Station.first)
+    Train.create(:name => '662', :departure_time => Time.zone.local(2014,11,20,17,4), :direction => 'S', :station => Station.first)
 
 
 
