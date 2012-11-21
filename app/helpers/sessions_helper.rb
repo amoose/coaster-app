@@ -6,6 +6,10 @@ module SessionsHelper
 
 	def current_user=(user)
 		@current_user = user
+		if @current_user and @current_user.ip_address != request.remote_ip
+			@current_user.ip_address = request.remote_ip
+			@current_user.save
+		end
 	end
 
 	def current_user

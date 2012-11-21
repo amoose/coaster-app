@@ -12,7 +12,15 @@
     </section>
   </aside>
   <div class="span8">
+
     <%= render 'follow_form' if signed_in? %>
 
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <%= debug @user %>
+    <h2>Geolocation</h2>
+    <%= debug @user.geolocation %>
   </div>
 </div>
