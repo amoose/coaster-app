@@ -11,6 +11,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  admin           :boolean          default(FALSE)
+#  ip_address      :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
 
     def set_geolocation
       self.geolocation.destroy unless self.geolocation.nil?
-      self.geolocation = Geolocation.new(:address => self.ip_address)
+      self.geolocation = Geolocation.new(:address => self.ip_address, :accuracy => 9)
     end
     def should_validate_password?
       self.new_record? || !self.password.nil? and !self.password_confirmation.nil?

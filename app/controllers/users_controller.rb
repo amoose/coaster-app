@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
   	if @user.save
       sign_in @user
-  		flash[:success] = "Welcome to the sample application!"
+  		flash[:success] = "Welcome to the CoasterApp!"
   		redirect_to @user
   	else
   		render 'new'
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   def update_geolocation
     @user = User.find(params[:id])
-    @user.geolocation = Geolocation.new :latitude => params[:latitude], :longitude => params[:longitude]
+    @user.geolocation = Geolocation.new :latitude => params[:latitude], :longitude => params[:longitude], :accuracy => 1
     @user.geolocation.save :validate => false  # skip the auto-geocode in geolocation model
     render json: @user.geolocation
   end

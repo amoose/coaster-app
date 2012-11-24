@@ -1,13 +1,13 @@
 class StaticPagesController < ApplicationController
   def home
-    @trains = Station.first.trains
-    @zones = Zone.all
-    @users = User.all
-    if signed_in?
-      params[:station_id] ||= Station.first.id
-      @station = Station.find(params[:station_id])
-      @trains = @station.trains
+    stations = Station.all
+    @stations = {}
+    stations.each do |station|
+      @stations[station.name.to_sym] = []
+      trains = station.trains.where('departure_time > ?',time_now).order('departure_time DESC')
+      @stations[station.name.to_sym] << trains.each { |train| train }
     end
+
   end
 
   def help
