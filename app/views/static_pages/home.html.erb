@@ -2,8 +2,12 @@
 	<div class="row">
 		<div class="span4">
 			<h1>Welcome back, <%= current_user.name %></h1>
+			<br />
+			<%= render 'shared/user_map' %>
 		</div>
 		<div class="span8">
+			<h2>Trains</h2>
+			<%= debug @stations %>
 
 		</div>
 	</div>

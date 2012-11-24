@@ -29,7 +29,7 @@ namespace :db do
     Train.create(:name => '654', :departure_time => Time.zone.local(2014,11,20,14,35), :direction => 'S', :station => Station.first)
     Train.create(:name => '656', :departure_time => Time.zone.local(2014,11,20,15,34), :direction => 'S', :station => Station.first)
     Train.create(:name => '660', :departure_time => Time.zone.local(2014,11,20,17,04), :direction => 'S', :station => Station.first)
-    Train.create(:name => '662', :departure_time => Time.zone.local(2014,11,20,17,4), :direction => 'S', :station => Station.first)
+    Train.create(:name => '662', :departure_time => Time.zone.local(2014,11,20,17,40), :direction => 'S', :station => Station.first)
 
 
 
