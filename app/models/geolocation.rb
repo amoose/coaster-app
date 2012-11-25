@@ -25,8 +25,12 @@ class Geolocation < ActiveRecord::Base
   end
 
   def short_address
-  	adr_short = ''
-  	adr = address.split(",").values_at(0..1)
-  	"#{adr[0]}, #{adr[1]}"
+  	begin
+	  	adr_short = ''
+	  	adr = address.split(",").values_at(0..1)
+	  	"#{adr[0]}, #{adr[1]}"
+	  rescue
+	  	"Searching..."
+	  end
   end
 end
