@@ -4,8 +4,13 @@ class ApplicationController < ActionController::Base
 
 
   def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path, :flash => { :error => 'You do not have access to this page.' }) unless current_user?(@user) || current_user.admin?
+  	begin
+    	@user = User.find(params[:id])
+    	redirect_to(root_path, :flash => { :error => 'You do not have access to this page.' }) unless current_user?(@user) || current_user.admin?
+    rescue
+    	logger.info '#{e.message}'
+    	flash.now[:notice] = "DERP!"
+    end
   end
 
   def admin_user
