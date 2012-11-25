@@ -21,7 +21,11 @@ class Geolocation < ActiveRecord::Base
   after_validation :geocode
 
   def address
-  	address ||= fetch_address
+  	begin
+  		address ||= fetch_address
+  	rescue
+  		return "wut"
+  	end
   end
 
   def short_address
@@ -30,7 +34,19 @@ class Geolocation < ActiveRecord::Base
 	  	adr = address.split(",").values_at(0..1)
 	  	"#{adr[0]}, #{adr[1]}"
 	  rescue
-	  	"Searching..."
+	  	begin
+	  		"#{latitude}, #{longitude}"
+	  	rescue
+	  		"Unknown"
+	  	end
 	  end
+	end
+
+  def latlon_changed?
+  	if self.latitude != Geolocation.find(self.id).latitude or self.longitude != Geolocation.find(self.id).longitude
+  		return true
+  	else
+  		return false
+  	end
   end
 end
