@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124061043) do
+ActiveRecord::Schema.define(:version => 20121125200437) do
 
   create_table "destinations", :force => true do |t|
     t.string   "name"
@@ -64,9 +64,13 @@ ActiveRecord::Schema.define(:version => 20121124061043) do
     t.time     "departure_time"
     t.string   "direction"
     t.boolean  "wifi"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "station_id"
+    t.boolean  "recurring",       :default => false
+    t.boolean  "completed",       :default => false
+    t.text     "recurring_value"
+    t.datetime "next_date"
   end
 
   add_index "trains", ["station_id"], :name => "index_trains_on_station_id"

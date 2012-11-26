@@ -19,7 +19,7 @@ namespace :db do
     Station.create(:name => 'Old Town (San Diego)', :address => '4005 Taylor St.', :city => 'San Diego', :state => 'CA', :zip => '92110', :zone => Zone.last)
     Station.create(:name => 'Sante Fe Depot (San Diego)', :address => '1050 Kettner Blvd.', :city => 'San Diego', :state => 'CA', :zip => '92101', :zone => Zone.last)
 
-    Train.create(:name => '630', :departure_time => Time.zone.local(2014,11,20,5,15), :direction => 'S', :station => Station.first)
+    Train.create(:name => '630', :departure_time => Time.zone.local(2014,11,20,5,15), :direction => 'S', :station => Station.first, :recurring => true, :completed => false, recurring_value => "self.next_date = self.next_date + (self.next_date + 1.day.saturday? ? 3.days : 1.day)")
     Train.create(:name => '634', :departure_time => Time.zone.local(2014,11,20,6,00), :direction => 'S', :station => Station.first)
     Train.create(:name => '636', :departure_time => Time.zone.local(2014,11,20,6,41), :direction => 'S', :station => Station.first)
     Train.create(:name => '638', :departure_time => Time.zone.local(2014,11,20,7,17), :direction => 'S', :station => Station.first)
