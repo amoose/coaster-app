@@ -14,7 +14,7 @@ module SessionsHelper
 
 	def current_user
 		@current_user ||= User.find_by_remember_token(cookies[:remember_token])
-		redirect_to signin_url, notice: "Nobody signed in." if @current_user.nil?
+		# redirect_to signin_url, notice: "Nobody signed in." if @current_user.nil?
 	end
 
 	def current_user?(user)
