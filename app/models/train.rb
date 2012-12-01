@@ -19,8 +19,6 @@
 class Train < ActiveRecord::Base
   attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value, :next_date
   belongs_to :station
-  after_validation :update_next_date
-
 
   def self.active
   	Train.where(:completed => false)
