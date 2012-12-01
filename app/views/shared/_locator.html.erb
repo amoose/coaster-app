@@ -1,5 +1,5 @@
 <div class="overlay"><div class="spinner"></div></div>
-<% if signed_in? and current_user.tracking? %>
+<% if signed_in? and @current_user.tracking? %>
 	<script>
 		$(function(){
 			coaster_enable_geolocation()
@@ -9,10 +9,10 @@
 	<div id="tracker" class="no-tracking">
 		<div class="lcontent">
 			<h3>Your Geolocation</h3>
-			<% if current_user.geolocation.latitude.nil? %>
+			<% if @current_user.geolocation.latitude.nil? %>
 				<h5>Updating your geolocation...</h5>
 			<% else %>
-				<h5><%= current_user.geolocation.short_address %></h5>
+				<h5><%= @current_user.geolocation.short_address %></h5>
 			<% end %>
 
 		</div>
@@ -43,7 +43,7 @@
 
 
 		<script>
-			<% if !current_user.geolocation.nil? and !current_user.geolocation.latitude.blank? %>
+			<% if !@current_user.geolocation.nil? and !@current_user.geolocation.latitude.blank? %>
 				var mapcanvas = document.createElement('div');
 				  mapcanvas.id = 'mapcanvas';
 				  mapcanvas.style.height = '120px';
@@ -51,7 +51,7 @@
 
 				  document.querySelector('div.lcontent').appendChild(mapcanvas);
 
-				  var latlng = new google.maps.LatLng("<%= current_user.geolocation.latitude %>","<%= current_user.geolocation.longitude %>");
+				  var latlng = new google.maps.LatLng("<%= @current_user.geolocation.latitude %>","<%= @current_user.geolocation.longitude %>");
 				  var myOptions = {
 				    zoom: 15,
 				    center: latlng,
@@ -79,7 +79,7 @@
 				function coaster_update_coords(position) {
 
 					$.ajax({
-					  url: '/users/<%= current_user.id %>/update_geolocation',
+					  url: '/users/<%= @current_user.id %>/update_geolocation',
 					  data: { latitude: position.coords.latitude, longitude: position.coords.longitude },
 					  success: function(data) {
 					  	$('.coords').html(data);

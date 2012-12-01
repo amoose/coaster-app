@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @current_user = current_user
     stations = Station.all
     @stations = {}
     stations.each do |station|
@@ -21,5 +22,6 @@ class StaticPagesController < ApplicationController
   def contact
   	# emptry1!!!
   end
+
 
 end
