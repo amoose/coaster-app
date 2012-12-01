@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
     @stations = {}
     stations.each do |station|
       @stations[station.name.to_sym] = []
-      trains = station.trains.where('departure_time > ?',time_now).order('departure_time DESC')
+      trains = station.trains.active
       @stations[station.name.to_sym] << trains.each { |train| train }
     end
 

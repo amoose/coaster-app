@@ -3,7 +3,9 @@
 		<div class="span4">
 			<h1>Welcome back, <%= current_user.name %></h1>
 			<br />
-			<%= render 'shared/user_map' %>
+			<div id="locator-wrapper">
+				<%= render 'shared/locator' %>
+			</div>
 		</div>
 		<div class="span8">
 			<h2>Trains</h2>

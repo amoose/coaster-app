@@ -5,8 +5,6 @@
       <nav>
         <ul class="nav pull-right">
           <% if signed_in? %>
-            <li><a href="#">Your current location:&nbsp;&nbsp;<span class="address"><%= current_user.nil? ? 'Unknown' : current_user.geolocation.short_address %></span></a></li>
-
             <li><%= link_to "Users", users_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -23,6 +21,7 @@
             </li>
           <% else %>
             <li><%= link_to "Sign in", signin_path %></li>
+            <li><%= link_to "Sign Up!", signup_path, :class => 'signup' %></li>
           <% end %>
         </ul>
       </nav>

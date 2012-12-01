@@ -6,7 +6,7 @@ module SessionsHelper
 
 	def current_user=(user)
 		@current_user = user
-		if @current_user and @current_user.ip_address != request.remote_ip
+		if @current_user and @current_user.ip_address != request.remote_ip and @current_user.geolocation.updated_at < 1.hour.ago
 			@current_user.ip_address = request.remote_ip
 			@current_user.save
 		end

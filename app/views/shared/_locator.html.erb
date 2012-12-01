@@ -1,0 +1,102 @@
+<div class="overlay"><div class="spinner"></div></div>
+<% if signed_in? and current_user.tracking? %>
+	<script>
+		$(function(){
+			coaster_enable_geolocation()
+		})
+	</script>
+
+	<div id="tracker" class="no-tracking">
+		<div class="lcontent">
+			<h3>Your Geolocation</h3>
+			<% if current_user.geolocation.latitude.nil? %>
+				<h5>Updating your geolocation...</h5>
+			<% else %>
+				<h5><%= current_user.geolocation.short_address %></h5>
+			<% end %>
+
+		</div>
+		<div id="mapcanvas"></div>
+	</div>
+
+<% else %>
+	<script>
+
+
+		$(function() {
+			$('.enable-geolocation').click(function() {
+				coaster_enable_geolocation()
+				return false
+			})
+		})
+	</script>
+
+	<div id="tracker" class="no-tracking">
+		<div class="lcontent">
+			<a href="#" class="enable-geolocation"><h3>Enable Geolocation</h3></a>
+			<p class="info">This application uses your geolocation to automatically find the nearest Coaster station and other neat features. Your personal information is not shared with any other parties. Read our <a href="/privacy">Privacy Policy</a> for more inforamtion.</p>
+		</div>
+		<div id="mapcanvas"></div>
+	</div>
+<% end %>
+
+
+	<% if !current_user.geolocation.nil? and !current_user.geolocation.latitude.blank? %>
+		<script>
+			var mapcanvas = document.createElement('div');
+			  mapcanvas.id = 'mapcanvas';
+			  mapcanvas.style.height = '120px';
+			  mapcanvas.style.width = '250px';
+
+			  document.querySelector('div.lcontent').appendChild(mapcanvas);
+
+			  var latlng = new google.maps.LatLng("<%= current_user.geolocation.latitude %>","<%= current_user.geolocation.longitude %>");
+			  var myOptions = {
+			    zoom: 15,
+			    center: latlng,
+			    mapTypeControl: false,
+			    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+			    mapTypeId: google.maps.MapTypeId.ROADMAP
+			  };
+			  var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+
+			  var marker = new google.maps.Marker({
+			      position: latlng,
+			      map: map,
+			      title: "You are here (maybe)"
+			  });
+
+			  var coaster_enable_geolocation = function() {
+					if (navigator.geolocation) {
+					  navigator.geolocation.getCurrentPosition(coaster_update_coords, coaster_error);
+					} else {
+					  coaster_error('not supported');
+					}
+				}
+				function coaster_update_coords(position) {
+
+					$.ajax({
+					  url: '/users/<%= current_user.id %>/update_geolocation',
+					  data: { latitude: position.coords.latitude, longitude: position.coords.longitude },
+					  success: function(data) {
+					  	$('.coords').html(data);
+					  	coaster_update_locator();
+					  }
+					});
+				}
+				var coaster_update_locator = function() {
+					$.ajax({
+					  url: '/locator',
+					  data: { },
+					  success: function(data) {
+					  	$('#locator-wrapper').html(data).addClass('loaded');
+					  }
+					});
+				}
+
+				var coaster_error = function(e) {
+					$('.lcontent').append('<p class="error">An error occurred mapping your geolocation.<br /><br />' + e + '	</p>');
+				}
+		</script>
+
+	<% end %>

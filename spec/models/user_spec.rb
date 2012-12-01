@@ -12,6 +12,7 @@
 #  updated_at      :datetime         not null
 #  admin           :boolean          default(FALSE)
 #  ip_address      :string(255)
+#  tracking        :boolean          default(FALSE)
 #
 
 require 'spec_helper'

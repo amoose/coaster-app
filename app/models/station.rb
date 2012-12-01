@@ -19,7 +19,7 @@ class Station < ActiveRecord::Base
   has_one :geolocation, :as => :geocodeable
   has_many :trains
   before_save :set_geolocation
-  after_validation :update_next_date
+
 
   def full_address
   	address = self.address + ', ' + self.city + ', ' + self.zip
@@ -29,9 +29,5 @@ class Station < ActiveRecord::Base
   	self.geolocation ||= Geolocation.new(:address => self.full_address)
   end
 
-  def update_next_date
-    exec = self.recurring_value
-    eval(exec) unless exec.nil?
-    self.save :validate => false
-  end
+
 end
