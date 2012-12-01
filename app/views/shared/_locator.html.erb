@@ -41,30 +41,33 @@
 <% end %>
 
 
-	<% if !current_user.geolocation.nil? and !current_user.geolocation.latitude.blank? %>
+
 		<script>
-			var mapcanvas = document.createElement('div');
-			  mapcanvas.id = 'mapcanvas';
-			  mapcanvas.style.height = '120px';
-			  mapcanvas.style.width = '250px';
+			<% if !current_user.geolocation.nil? and !current_user.geolocation.latitude.blank? %>
+				var mapcanvas = document.createElement('div');
+				  mapcanvas.id = 'mapcanvas';
+				  mapcanvas.style.height = '120px';
+				  mapcanvas.style.width = '250px';
 
-			  document.querySelector('div.lcontent').appendChild(mapcanvas);
+				  document.querySelector('div.lcontent').appendChild(mapcanvas);
 
-			  var latlng = new google.maps.LatLng("<%= current_user.geolocation.latitude %>","<%= current_user.geolocation.longitude %>");
-			  var myOptions = {
-			    zoom: 15,
-			    center: latlng,
-			    mapTypeControl: false,
-			    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-			    mapTypeId: google.maps.MapTypeId.ROADMAP
-			  };
-			  var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+				  var latlng = new google.maps.LatLng("<%= current_user.geolocation.latitude %>","<%= current_user.geolocation.longitude %>");
+				  var myOptions = {
+				    zoom: 15,
+				    center: latlng,
+				    mapTypeControl: false,
+				    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+				    mapTypeId: google.maps.MapTypeId.ROADMAP
+				  };
+				  var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
 
-			  var marker = new google.maps.Marker({
-			      position: latlng,
-			      map: map,
-			      title: "You are here (maybe)"
-			  });
+				  var marker = new google.maps.Marker({
+				      position: latlng,
+				      map: map,
+				      title: "You are here (maybe)"
+				  });
+
+				<% end %>
 
 			  var coaster_enable_geolocation = function() {
 					if (navigator.geolocation) {
@@ -98,5 +101,3 @@
 					$('.lcontent').append('<p class="error">An error occurred mapping your geolocation.<br /><br />' + e + '	</p>');
 				}
 		</script>
-
-	<% end %>
