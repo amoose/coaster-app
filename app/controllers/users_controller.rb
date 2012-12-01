@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     if @user == current_user
       @user.tracking = true
       @user.geolocation = Geolocation.new :latitude => params[:latitude], :longitude => params[:longitude], :accuracy => 1
+      @user.save :validate => false
       @user.geolocation.save :validate => false  # skip the auto-geocode in geolocation model
       render json: @user.geolocation
     end
