@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title CoasterApp
+    meta name="keywords" content="Coaster App"
+    meta name="author" content=""
+    = stylesheet_link_tag    "application", :media => "all"
+    = csrf_meta_tags
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    = render 'layouts/shim'
+    / javascript:
+
+
+  body
+    div class="container"
+      div class="masthead"
+        = render 'layouts/nav'
+      = render 'shared/flash_messages'
+
+      div class="row-fluid"
+        == yield
+
+      = render 'layouts/footer'
+
+  = javascript_include_tag "application"
+  = javascript_include_tag "backbone"
+- if Rails.env.development?
+  = debug(params)
+  = debug(request.env)

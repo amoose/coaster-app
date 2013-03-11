@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 gem 'bcrypt-ruby'
 
@@ -10,6 +10,9 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'geocoder'
 gem 'sass-rails',   '~> 3.2.3'
+gem "slim", ">= 2.0.0.pre.6"
+gem "haml2slim", ">= 0.4.6", :group => :development
+gem "haml-rails", ">= 0.4", :group => :development
 
 group :development do
   gem 'sqlite3'

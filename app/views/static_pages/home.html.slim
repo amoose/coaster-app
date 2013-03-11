@@ -1,0 +1,8 @@
+- if signed_in?
+	div id="locator-wrapper"
+		= render 'shared/locator'
+
+- else
+	h3
+		| Not logged in.
+		= debug @stations

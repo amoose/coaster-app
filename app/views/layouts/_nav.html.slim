@@ -1,0 +1,15 @@
+h3 class="muted"
+  | Coaster App
+
+div class="navbar"
+  div class="navbar-inner"
+    div class="container"
+      ul class="nav"
+        = nav_link 'Home', root_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+        - if signed_in?
+          li
+            = link_to "Sign out", signout_path, method: "delete"
+        - else
+          = nav_link 'Login', signin_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+          = nav_link 'Sign Up', signup_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+

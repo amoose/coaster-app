@@ -4,9 +4,9 @@ class StaticPagesController < ApplicationController
     stations = Station.all
     @stations = {}
     stations.each do |station|
-      @stations[station.name.to_sym] = []
+      @stations[station.name] = []
       trains = station.trains.active
-      @stations[station.name.to_sym] << trains.each { |train| train }
+      @stations[station.name] << trains.each { |train| train }
     end
 
   end
