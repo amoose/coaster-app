@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     	@user = User.find(params[:id])
     	redirect_to(root_path, :flash => { :error => 'You do not have access to this page.' }) unless current_user?(@user) || current_user.admin?
     rescue
-    	logger.info '#{e.message}'
+    	logger.info e.message
     	flash.now[:notice] = "DERP!"
     end
   end
