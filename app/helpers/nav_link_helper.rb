@@ -101,6 +101,7 @@ module NavLinkHelper
     end
 
     def link
+      # @title = @title + "&nbsp;<i class='icon-home icon-black'></i>".html_safe if @title == 'Home'
       link_to(@title, @path, html_options)
     end
 

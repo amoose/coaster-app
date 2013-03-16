@@ -1,8 +1,19 @@
 - if signed_in?
-	div id="locator-wrapper"
-		= render 'shared/locator'
+	h2
+	 | Welcome back,&nbsp;
+	 = current_user.name
+	= render :partial => 'map'
 
+	javascript:
+		var latlng = new google.maps.LatLng("#{@stations.first.geolocation.latitude}","#{@stations.first.geolocation.longitude}");
+		var marker2 = new google.maps.Marker({
+	      position: latlng,
+	      map: map,
+	      title: "#{@stations.first.name}"
+	  	});
+
+	/= debug @stations
 - else
 	h3
 		| Not logged in.
-		= debug @stations
+		/ = debug @stations

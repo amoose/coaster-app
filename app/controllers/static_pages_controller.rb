@@ -1,14 +1,14 @@
 class StaticPagesController < ApplicationController
   def home
-    @current_user = current_user
-    stations = Station.all
-    @stations = {}
-    stations.each do |station|
-      @stations[station.name] = []
-      trains = station.trains.active
-      @stations[station.name] << trains.each { |train| train }
-    end
+    @stations = []
+    if signed_in?
 
+      geolocs = Geolocation.where(:geocodeable_type => 'Station').near(current_user.geolocation.address)
+
+      geolocs.each do |loc|
+        @stations << Station.find(loc.geocodeable_id)
+      end
+    end
   end
 
   def help

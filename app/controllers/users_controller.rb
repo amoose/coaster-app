@@ -47,8 +47,9 @@ class UsersController < ApplicationController
     if @user == current_user
       @user.tracking = true
       @user.geolocation = Geolocation.new :latitude => params[:latitude], :longitude => params[:longitude], :accuracy => 1
-      @user.save :validate => false
+      # @user.save :validate => false
       @user.geolocation.save :validate => false  # skip the auto-geocode in geolocation model
+
       render json: @user.geolocation
     end
   end
@@ -62,14 +63,14 @@ class UsersController < ApplicationController
   def locator
     render :partial => 'shared/locator'
   end
-  # private
+  private
 
-  #   def correct_user
-  #     @user = User.find(params[:id])
-  #     redirect_to(root_path) unless current_user?(@user)
-  #   end
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
 
-  #   def admin_user
-  #     redirect_to(root_path) unless current_user.admin?
-  #   end
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end

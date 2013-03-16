@@ -21,11 +21,7 @@ class Geolocation < ActiveRecord::Base
   after_validation :geocode
 
   def address
-  	begin
-  		address ||= fetch_address
-  	rescue
-  		return "wut"
-  	end
+    @address ||= self.fetch_address
   end
 
   def short_address

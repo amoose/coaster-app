@@ -6,24 +6,25 @@ html
     meta name="author" content=""
     = stylesheet_link_tag    "application", :media => "all"
     = csrf_meta_tags
+    = javascript_include_tag "application"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     = render 'layouts/shim'
-    / javascript:
+    = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDJPsdtXMZoaCRJL2Fp7lk3y6Gds9qldSg&sensor=true'
+    / <script type="text/javascript" src="">
+
+
 
 
   body
+    = render 'layouts/nav'
     div class="container"
-      div class="masthead"
-        = render 'layouts/nav'
       = render 'shared/flash_messages'
-
       div class="row-fluid"
         == yield
-
       = render 'layouts/footer'
 
-  = javascript_include_tag "application"
-  = javascript_include_tag "backbone"
+
 - if Rails.env.development?
+  hr
   = debug(params)
-  = debug(request.env)
+  / = debug(request.env)

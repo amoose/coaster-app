@@ -30,4 +30,7 @@ class Station < ActiveRecord::Base
   end
 
 
+  # def self.near
+
+  # end
 end
