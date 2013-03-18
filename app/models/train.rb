@@ -1,3 +1,4 @@
+require 'date'
 # == Schema Information
 #
 # Table name: trains
@@ -20,6 +21,42 @@ class Train < ActiveRecord::Base
   attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value, :next_date
   belongs_to :station
   serialize :recurring_value, Hash
+
+  def next_departure(date=Date.today)
+    if self.departs?
+			self.departure
+    end
+  end
+
+  def departs?(date=Date.today)
+  	self.recurring and self.recurring_value.has_key?('days') and self.recurring_value['days'].include? Date::ABBR_DAYNAMES[date.wday].downcase
+  end
+
+  def departure(date=Date.today,time=self.time_zone)
+  	Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec) if self.departs?
+  end
+
+  def has_departed?(time=Time.now)
+  	self.departure > time
+  end
+
+  def time_zone
+  	self.departure_time.in_time_zone('Pacific Time (US & Canada)')
+  end
+
+  def formatted_time(time=self.time_zone)
+		if time.strftime('%I').to_i < 10
+			"#{time.strftime('%I').to_s[-1..-1]}#{time.strftime(':%M%p')}"
+		else
+			 time.strftime("%I:%M%p")
+		end
+	end
+
+	def departure(date=Date.today)
+		if self.departs?(date)
+			self.time_zone
+		end
+	end
 
   def self.active
   	Train.where(:completed => false)

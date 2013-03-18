@@ -13,6 +13,7 @@ gem 'sass-rails',   '~> 3.2.3'
 gem "slim", ">= 2.0.0.pre.6"
 gem "haml2slim", ">= 0.4.6", :group => :development
 gem "haml-rails", ">= 0.4", :group => :development
+gem "gmaps4rails", "~> 1.5.6"
 
 group :development do
   gem 'sqlite3'

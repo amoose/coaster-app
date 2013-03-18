@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
+
 // bootstrap
 //= require twitter/bootstrap/transition
 //= require twitter/bootstrap/alert

@@ -20,9 +20,11 @@ class Geolocation < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode
 
-  def address
-    @address ||= self.fetch_address
-  end
+  acts_as_gmappable
+
+  # def address
+  #   @address ||= self.fetch_address
+  # end
 
   def short_address
   	begin
@@ -44,5 +46,10 @@ class Geolocation < ActiveRecord::Base
   	else
   		return false
   	end
+  end
+
+  def gmaps4rails_address
+  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    self.address ||= self.fetch_address
   end
 end

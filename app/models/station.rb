@@ -20,7 +20,6 @@ class Station < ActiveRecord::Base
   has_many :trains
   before_save :set_geolocation
 
-
   def full_address
   	address = self.address + ', ' + self.city + ', ' + self.zip
   end

@@ -2,17 +2,14 @@
 	h2
 	 | Welcome back,&nbsp;
 	 = current_user.name
-	= render :partial => 'map'
+	/ = render :partial => 'map'
 
-	javascript:
-		var latlng = new google.maps.LatLng("#{@stations.first.geolocation.latitude}","#{@stations.first.geolocation.longitude}");
-		var marker2 = new google.maps.Marker({
-	      position: latlng,
-	      map: map,
-	      title: "#{@stations.first.name}"
-	  	});
+	= render :partial => 'station', :object => @station
+	= render :partial => 'schedule', :object => @trains
 
-	/= debug @stations
+	/ = debug @station.trains
+	hr
+	= gmaps4rails(@json)
 - else
 	h3
 		| Not logged in.

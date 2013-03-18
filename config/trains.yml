@@ -122,6 +122,114 @@ stations:
         recurring_value:
           days: ['sat','sun']
 
+
+      '631':
+        departure_time: '5:15'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '6:00'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '6:41'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '7:17'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '7:42'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '9:21'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '11:05'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '14:35'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '15:34'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '17:04'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '17:40'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '8:31'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '11:05'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '13:50'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '17:15'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+
   'Carlsbad Village':
     address: 2775 State St.
     city: Carlsbad

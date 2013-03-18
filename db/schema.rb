@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201224502) do
+ActiveRecord::Schema.define(:version => 20130318060541) do
 
   create_table "destinations", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20121201224502) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "accuracy"
+    t.boolean  "gmaps"
   end
 
   add_index "geolocations", ["latitude", "longitude"], :name => "index_geolocations_on_latitude_and_longitude"
