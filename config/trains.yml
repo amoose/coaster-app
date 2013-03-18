@@ -22,6 +22,7 @@ stations:
         completed: false
         recurring_value:
           days: ['mon','tue','wed','thu','fri']
+
       '634':
         departure_time: '6:00'
         direction: S
@@ -29,6 +30,7 @@ stations:
         completed: false
         recurring_value:
           days: ['mon','true','wed','thu','fri']
+
       '636':
         departure_time: '6:41'
         direction: S
