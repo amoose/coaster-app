@@ -5,7 +5,8 @@ namespace :db do
     Rake::Task['db:create'].invoke
     Rake::Task['db:migrate'].invoke
 
-    seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
+    # seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
+    seed = YAML.load(File.read(File.join(Rails.root, 'config', 'trains.yml')))
 
     seed[:zones].each do |zone|
         Zone.create(:name => zone.second['name'])
