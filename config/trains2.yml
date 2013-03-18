@@ -1,0 +1,24 @@
+# YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
+zones:
+  '1':
+    name: Zone 1 (Oceanside-Solana Beach)
+  '2':
+    name: Zone 2 (Sorrento Valley)
+  '3':
+    name: Zone 3 (Old Town-Santa Fe Depot)
+
+stations:
+  'Oceanside Transit Center':
+    address: 195 S. Tremont St.
+    city: Oceanside
+    state: CA
+    zip: 92054
+    zone: 1
+    trains:
+      '630':
+        departure_time: '5:15'
+        direction: S
+        recurring: true
+        completed: false
+        recurring_value:
+          days: "['mon','tue','wed','thu','fri']"
