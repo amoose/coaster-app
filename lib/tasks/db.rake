@@ -6,7 +6,11 @@ namespace :db do
     Rake::Task['db:migrate'].invoke
 
     # seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
-    seed = YAML.load(File.read(File.join(Rails.root, 'config', 'trains.yml')))
+    begin
+      seed = YAML.load(File.read(File.join(Rails.root, 'config', 'trains.yml')))
+    rescue
+      puts 'AN ERROR OCCURRED READING trains.yml'
+    end
 
     seed[:zones].each do |zone|
         Zone.create(:name => zone.second['name'])
