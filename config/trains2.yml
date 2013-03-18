@@ -20,5 +20,4 @@ stations:
         direction: S
         recurring: true
         completed: false
-        recurring_value:
-          days: "['mon','tue','wed','thu','fri']"
+        recurring_value: "days: ['mon','tue','wed','thu','fri']"
