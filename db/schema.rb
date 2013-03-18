@@ -42,13 +42,6 @@ ActiveRecord::Schema.define(:version => 20130318060541) do
 
   add_index "geolocations", ["latitude", "longitude"], :name => "index_geolocations_on_latitude_and_longitude"
 
-  create_table "reverse_geolocations", :force => true do |t|
-    t.integer  "geolocation_id"
-    t.string   "address"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
   create_table "stations", :force => true do |t|
     t.string   "name"
     t.string   "city"

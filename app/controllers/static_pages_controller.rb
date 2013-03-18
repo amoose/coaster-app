@@ -12,17 +12,22 @@ class StaticPagesController < ApplicationController
       @trains =   []
       station_geolocations =     []
 
-      @station.trains.each do |train|
-        @trains << train if train.departs?
+      if @station
+        @station.trains.each do |train|
+          @trains << train if train.departs?
+        end
 
+        @stations.each do |station|
+          station_geolocations << station.geolocation
+        end
+
+        # @json = Geolocation.where
+        @json = station_geolocations.to_gmaps4rails
       end
 
-      @stations.each do |station|
-        station_geolocations << station.geolocation
-      end
-
-      # @json = Geolocation.where
-      @json = station_geolocations.to_gmaps4rails
+      @station ||= Station.first
+      @json ||= @station.geolocation.to_gmaps4rails
+      @trains ||= @station.trains
     end
   end
 

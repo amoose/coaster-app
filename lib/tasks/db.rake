@@ -41,7 +41,7 @@ namespace :db do
   end
 
 
-  desc "setup, create, migrate then seed the database"
+  desc "tasks for heroku"
   task :seed_heroku => :environment do
     Rake::Task['db:setup'].invoke
     Rake::Task['db:create'].invoke

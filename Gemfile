@@ -16,16 +16,17 @@ gem "haml-rails", ">= 0.4", :group => :development
 gem "gmaps4rails", "~> 1.5.6"
 
 group :development do
-  gem 'sqlite3'
   gem 'pry'
   gem 'pry-doc'
   gem 'pry-nav'
   gem 'annotate'
 end
 
-group :production do
-  gem 'pg'
+group :test do
+  gem 'sqlite3'
 end
+
+gem 'pg'
 
 
 
