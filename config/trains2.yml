@@ -15,9 +15,9 @@ stations:
     zip: 92054
     zone: 1
     trains:
-      '630':
+      'SerprrTrian':
         departure_time: '5:15'
         direction: S
         recurring: true
         completed: false
-        recurring_value: "days: ['mon','tue','wed','thu','fri']"
+        recurring_value: "{'days\'=>[\'mon\', \'tue\', \'wed\', \'thu\', \'fri\']}"

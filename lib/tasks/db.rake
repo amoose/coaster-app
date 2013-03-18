@@ -73,7 +73,7 @@ namespace :db do
                     :station => Station.find_by_name(station.first),
                     :recurring => train.last['recurring'],
                     :completed => train.last['completed'],
-                    :recurring_value => train.last['recurring_value']
+                    :recurring_value => eval(train.last['recurring_value'])
                 )
         end
     end
