@@ -32,7 +32,7 @@ class Train < ActiveRecord::Base
   	self.recurring and self.recurring_value.has_key?('days') and self.recurring_value['days'].include? Date::ABBR_DAYNAMES[date.wday].downcase
   end
 
-  def has_departed?(time=Time.now)
+  def has_departed?(time=Time.now.in_time_zone('Pacific Time (US & Canada)'))
   	self.departure < time
   end
 
