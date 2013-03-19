@@ -22,6 +22,7 @@ class Train < ActiveRecord::Base
   belongs_to :station
   serialize :recurring_value, Hash
 
+  scope :departs, :where
   def next_departure(date=Date.today)
     if self.departs?
 			self.departure
@@ -32,16 +33,17 @@ class Train < ActiveRecord::Base
   	self.recurring and self.recurring_value.has_key?('days') and self.recurring_value['days'].include? Date::ABBR_DAYNAMES[date.wday].downcase
   end
 
-  def departure(date=Date.today,time=self.time_zone)
-  	Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec) if self.departs?
-  end
+  # def departure(date=Date.today,time=self.time_zone)
+  # 	Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec) if self.departs?(date)
+  # end
 
   def has_departed?(time=Time.now)
   	self.departure > time
   end
 
-  def time_zone
-  	self.departure_time.in_time_zone('Pacific Time (US & Canada)')
+  def time_zone(date=Date.today)
+  	time = self.departure_time.in_time_zone('Pacific Time (US & Canada)')
+    Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec)
   end
 
   def formatted_time(time=self.time_zone)
@@ -53,13 +55,12 @@ class Train < ActiveRecord::Base
 	end
 
 	def departure(date=Date.today)
-		if self.departs?(date)
-			self.time_zone
-		end
+		self.time_zone if self.departs?(date)
 	end
 
   def self.active
   	Train.where(:completed => false)
 	end
+
 
 end

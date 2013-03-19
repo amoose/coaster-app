@@ -7,7 +7,8 @@ namespace :db do
 
     # seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
     begin
-      seed = YAML.load(File.read(File.join(Rails.root, 'config', 'trains.yml')))
+      # seed = YAML.load(File.read(File.join(Rails.root, 'config', 'trains.yml')))
+      seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
     rescue
       puts 'AN ERROR OCCURRED READING trains.yml'
     end

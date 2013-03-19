@@ -346,6 +346,114 @@ stations:
         recurring_value:
           days: ['sat','sun']
 
+
+      '631':
+        departure_time: '7:25'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '8:42'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '10:43'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '13:37'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '15:16'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '16:42'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '17:23'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '17:50'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '18:32'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '19:19'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '20:03'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '10:43'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '13:19'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '16:22'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '19:42'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+
   'Carlsbad Poinsettia':
     address: 6511 Avenida Encinas
     city: Carlsbad
@@ -455,6 +563,113 @@ stations:
       '692':
         departure_time: '17:26'
         direction: S
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+
+      '631':
+        departure_time: '7:17'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '8:35'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '10:37'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '13:30'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '15:09'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '16:35'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '17:17'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '17:44'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '18:23'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '19:13'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '19:57'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '10:36'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '13:11'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '16:15'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '19:35'
+        direction: N
         recurring: true
         completed: false
         recurring_value:
@@ -575,6 +790,113 @@ stations:
         recurring_value:
           days: ['sat','sun']
 
+      '631':
+        departure_time: '7:09'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '8:29'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '10:31'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '13:24'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '15:03'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '16:29'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '17:11'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '17:34'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '18:18'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '19:07'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '19:51'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '10:31'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '13:05'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '16:09'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '19:30'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+
   'Solana Beach':
     address: 105 N. Cedros Ave.
     city: Solana Beach
@@ -684,6 +1006,113 @@ stations:
       '692':
         departure_time: '17:38'
         direction: S
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+
+      '631':
+        departure_time: '7:04'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '8:24'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '10:23'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '13:16'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '14:54'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '16:23'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '17:05'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '17:28'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '18:12'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '19:02'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '19:44'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '10:25'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '12:59'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '16:03'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '19:24'
+        direction: N
         recurring: true
         completed: false
         recurring_value:
@@ -803,6 +1232,114 @@ stations:
         recurring_value:
           days: ['sat','sun']
 
+      '631':
+        departure_time: '6:55'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '8:15'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '10:14'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '13:06'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '14:44'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '16:12'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '16:54'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '17:19'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '18:02'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '18:52'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '19:34'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '10:17'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '12:51'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '15:54'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '19:15'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+
+
   'Old Town (San Diego)':
     address: 4005 Taylor St.
     city: San Diego
@@ -917,6 +1454,112 @@ stations:
         recurring_value:
           days: ['sat','sun']
 
+      '631':
+        departure_time: '6:34'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '7:52'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '9:54'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '12:45'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '14:24'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '15:51'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '16:34'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '16:58'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '17:40'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '18:32'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '19:14'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '9:54'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '12:30'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '15:32'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '18:52'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
 
   'Santa Fe Depot (San Diego)':
     address: 1050 Kettner Blvd.
@@ -1027,6 +1670,113 @@ stations:
       '692':
         departure_time: '18:17'
         direction: S
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+
+      '631':
+        departure_time: '6:28'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '635':
+        departure_time: '7:46'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','true','wed','thu','fri']
+      '639':
+        departure_time: '9:48'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '645':
+        departure_time: '12:40'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '651':
+        departure_time: '14:18'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '653':
+        departure_time: '15:45'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '655':
+        departure_time: '16:27'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '657':
+        departure_time: '16:52'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '661':
+        departure_time: '17:34'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '663':
+        departure_time: '18:25'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+      '665':
+        departure_time: '19:08'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['mon','tue','wed','thu','fri']
+
+      '681':
+        departure_time: '9:48'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '685':
+        departure_time: '12:24'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '689':
+        departure_time: '15:25'
+        direction: N
+        recurring: true
+        completed: false
+        recurring_value:
+          days: ['sat','sun']
+      '693':
+        departure_time: '18:45'
+        direction: N
         recurring: true
         completed: false
         recurring_value:

@@ -32,4 +32,10 @@ class Station < ActiveRecord::Base
   # def self.near
 
   # end
+
+  def departing(date=Date.today)
+    self.trains.each do |train|
+      [] << train if train.departs?(date)
+    end
+  end
 end
