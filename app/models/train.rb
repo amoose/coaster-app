@@ -50,7 +50,7 @@ class Train < ActiveRecord::Base
 	end
 
 	def departure(date=Date.today)
-		self.time_zone if self.departs?(date)
+		self.time_zone(date) if self.departs?(date)
 	end
 
   def self.active
