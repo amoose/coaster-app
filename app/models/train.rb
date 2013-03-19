@@ -33,7 +33,7 @@ class Train < ActiveRecord::Base
   end
 
   def has_departed?(time=Time.now)
-  	self.departure > time
+  	self.departure < time
   end
 
   def time_zone(date=Date.today)
