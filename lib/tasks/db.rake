@@ -47,7 +47,7 @@ namespace :db do
 
 
   desc "tasks for heroku"
-  task :seed_heroku => :environment do
+  task :heroku_seed => :environment do
     Rake::Task['db:setup'].invoke
     Rake::Task['db:create'].invoke
     Rake::Task['db:migrate'].invoke
