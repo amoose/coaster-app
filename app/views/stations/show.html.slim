@@ -1,0 +1,9 @@
+h3
+	= @station.name
+
+h4
+	| Trains
+
+= render :partial => 'shared/schedule', :locals => { :schedule => @trains }
+
+= debug @station.trains

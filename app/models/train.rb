@@ -18,11 +18,10 @@ require 'date'
 #
 
 class Train < ActiveRecord::Base
-  attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value, :next_date
+  attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value
   belongs_to :station
   serialize :recurring_value, Hash
 
-  scope :departs, :where
   def next_departure(date=Date.today)
     if self.departs?
 			self.departure
@@ -32,10 +31,6 @@ class Train < ActiveRecord::Base
   def departs?(date=Date.today)
   	self.recurring and self.recurring_value.has_key?('days') and self.recurring_value['days'].include? Date::ABBR_DAYNAMES[date.wday].downcase
   end
-
-  # def departure(date=Date.today,time=self.time_zone)
-  # 	Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec) if self.departs?(date)
-  # end
 
   def has_departed?(time=Time.now)
   	self.departure > time

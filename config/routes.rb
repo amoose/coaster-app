@@ -7,6 +7,7 @@ Coaster::Application.routes.draw do
   match '/users/:id/update_geolocation', to: 'users#update_geolocation'
   resources :sessions,        only: [:new, :create, :destroy]
   resources :destinations
+  resources :stations
 
   root to: 'static_pages#home'
   match '/help',      to: 'static_pages#help'

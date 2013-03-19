@@ -1,0 +1,14 @@
+= render :partial => 'shared/map', :locals => { :json => @json }
+
+table class="table table-hover"
+  tr
+    th
+      | Train
+    th
+      | Address
+  - @stations.each do |station|
+    tr
+      td
+        = link_to station.name, station
+      td
+        = station.address
