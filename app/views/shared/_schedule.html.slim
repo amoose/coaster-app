@@ -12,7 +12,7 @@ table class="table table-hover"
 				= train.name
 			td
 				- begin
-					- if train.has_departed?
+					- if train.has_departed?(@date)
 						span class="past"
 							= train.formatted_time
 					- else

@@ -22,18 +22,15 @@ class Train < ActiveRecord::Base
   belongs_to :station
   serialize :recurring_value, Hash
 
-  def next_departure(date=Date.today)
-    if self.departs?
-			self.departure
-    end
-  end
-
   def departs?(date=Date.today)
   	self.recurring and self.recurring_value.has_key?('days') and self.recurring_value['days'].include? Date::ABBR_DAYNAMES[date.wday].downcase
   end
 
   def has_departed?(time=Time.now.in_time_zone('Pacific Time (US & Canada)'))
-  	self.departure < time
+    if time.is_a? Date
+      time = Time.parse time.to_s
+    end
+  	self.departure(time) < Time.now.in_time_zone('Pacific Time (US & Canada)')
   end
 
   def time_zone(date=Date.today)
@@ -50,6 +47,7 @@ class Train < ActiveRecord::Base
 	end
 
 	def departure(date=Date.today)
+    # binding.pry
 		self.time_zone(date) if self.departs?(date)
 	end
 
