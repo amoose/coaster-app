@@ -25,6 +25,8 @@ class StaticPagesController < ApplicationController
         @json = station_geolocations.to_gmaps4rails
       end
 
+      @date = params[:date].nil? ? Date.today : Date.parse(params[:date])
+
       @station ||= Station.first
       @json ||= @station.geolocation.to_gmaps4rails
       @trains ||= @station.trains
