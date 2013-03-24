@@ -1,1 +1,16 @@
-= gmaps4rails(json)
+div class="map"
+	= gmaps4rails(map)
+	span class="toggle"
+		| Map
+
+
+javascript:
+	$(function() {
+		$('.map .toggle').click(function() {
+			if ($('.map').hasClass('open')) {
+				$('.map').animate({ bottom: -290}, 500).removeClass('open')
+			} else {
+				$('.map').animate({ bottom: 0}, 500).addClass('open')
+			}
+		})
+	})

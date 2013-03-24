@@ -1,8 +1,7 @@
 div id="footer"
-	| © dalbana #{Time.now.year}
+	| © dalbana #{Time.zone.now.year}
 
 - if signed_in?
 	div style="display: none"
 		input type="text" id="user_id" value="#{current_user.id}"
-
 div class="coords"

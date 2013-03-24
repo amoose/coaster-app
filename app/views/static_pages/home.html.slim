@@ -2,14 +2,11 @@
 	h2
 	 | Welcome back,&nbsp;
 	 = current_user.name
-	/ = render :partial => 'map'
+
 
 	= render :partial => 'station', :object => @station
 	= render :partial => 'shared/schedule', :object => @trains
-
-	/ = debug @station.trains
-	hr
-	= gmaps4rails(@json)
+	= render :partial => 'shared/map', :object => @json
 - else
 	h3
 		| Not logged in.

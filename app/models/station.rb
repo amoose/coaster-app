@@ -28,10 +28,10 @@ class Station < ActiveRecord::Base
   	self.geolocation ||= Geolocation.new(:address => self.full_address)
   end
 
-
-  # def self.near
-
-  # end
+  def next_departure
+    trains = Train.departing(self)
+    trains.each_with_index {|t,i| return t if t.has_departed? == false and trains[i+1].has_departed? == false and trains[i-1].has_departed? == true }
+  end
 
   def departing(date=Date.today)
     self.trains.each do |train|

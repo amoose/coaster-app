@@ -125,112 +125,112 @@ stations:
           days: ['sat','sun']
 
 
-      '631':
-        departure_time: '5:15'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '635':
-        departure_time: '6:00'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '639':
-        departure_time: '6:41'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '645':
-        departure_time: '7:17'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '651':
-        departure_time: '7:42'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '653':
-        departure_time: '9:21'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '655':
-        departure_time: '11:05'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '657':
-        departure_time: '14:35'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '661':
-        departure_time: '15:34'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '663':
-        departure_time: '17:04'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '665':
-        departure_time: '17:40'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
+      # '631':
+      #   departure_time: '5:15'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '635':
+      #   departure_time: '8:48'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '639':
+      #   departure_time: '10:50'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '645':
+      #   departure_time: '13:43'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '651':
+      #   departure_time: '15:21'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '653':
+      #   departure_time: '16:48'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '655':
+      #   departure_time: '17:29'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '657':
+      #   departure_time: '17:54'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '661':
+      #   departure_time: '18:37'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '663':
+      #   departure_time: '19:26'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '665':
+      #   departure_time: '20:10'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
 
-      '681':
-        departure_time: '8:31'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
-      '685':
-        departure_time: '11:05'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
-      '689':
-        departure_time: '13:50'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
-      '693':
-        departure_time: '17:15'
-        direction: N
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
+      # '681':
+      #   departure_time: '10:51'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
+      # '685':
+      #   departure_time: '13:25'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
+      # '689':
+      #   departure_time: '16:27'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
+      # '693':
+      #   departure_time: '19:48'
+      #   direction: N
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
 
   'Carlsbad Village':
     address: 2775 State St.
@@ -1568,112 +1568,112 @@ stations:
     zip: 92101
     zone: 3
     trains:
-      '630':
-        departure_time: '6:15'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '634':
-        departure_time: '7:00'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '636':
-        departure_time: '7:42'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '638':
-        departure_time: '8:18'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '640':
-        departure_time: '8:45'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '644':
-        departure_time: '10:23'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '648':
-        departure_time: '12:06'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '654':
-        departure_time: '15:39'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '656':
-        departure_time: '16:37'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '660':
-        departure_time: '18:07'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
-      '662':
-        departure_time: '18:46'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['mon','tue','wed','thu','fri']
+      # '630':
+      #   departure_time: '6:15'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '634':
+      #   departure_time: '7:00'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '636':
+      #   departure_time: '7:42'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '638':
+      #   departure_time: '8:18'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '640':
+      #   departure_time: '8:45'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '644':
+      #   departure_time: '10:23'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '648':
+      #   departure_time: '12:06'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '654':
+      #   departure_time: '15:39'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '656':
+      #   departure_time: '16:37'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '660':
+      #   departure_time: '18:07'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
+      # '662':
+      #   departure_time: '18:46'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['mon','tue','wed','thu','fri']
 
-      '680':
-        departure_time: '9:31'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
-      '684':
-        departure_time: '12:08'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
-      '688':
-        departure_time: '14:53'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
-      '692':
-        departure_time: '18:17'
-        direction: S
-        recurring: true
-        completed: false
-        recurring_value:
-          days: ['sat','sun']
+      # '680':
+      #   departure_time: '9:31'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
+      # '684':
+      #   departure_time: '12:08'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
+      # '688':
+      #   departure_time: '14:53'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
+      # '692':
+      #   departure_time: '18:17'
+      #   direction: S
+      #   recurring: true
+      #   completed: false
+      #   recurring_value:
+      #     days: ['sat','sun']
 
       '631':
         departure_time: '6:28'
