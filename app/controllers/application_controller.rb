@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def time_now
-  	t = Time.now
-  	# Time.new(2000,1,1,t.hour,t.min,t.sec)
+  	t = Time.zone.now
   end
 end
