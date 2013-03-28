@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
 
 
         @date = params[:date].nil? ? Date.today : Date.parse(params[:date])
-      rescue => e
+      rescue Exception => e
         flash.now e.message
       end
 
