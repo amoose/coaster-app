@@ -10,24 +10,20 @@ class StaticPagesController < ApplicationController
 
       # @stations = Station.where(:id => geolocs.map(&:geocodeable_id))
 
+      begin
+        @station = Station.where(:id => geolocs.first.geocodeable_id).first
+        @trains = Train.departing(@station)
+        station_geolocations =     []
 
-      @station = Station.where(:id => geolocs.first.geocodeable_id).first
-      @trains = Train.departing(@station)
-      station_geolocations =     []
 
-      # if @station
-
-      #   @stations.each do |station|
-      #     station_geolocations << station.geolocation
-      #   end
-
-      #   @json = station_geolocations.to_gmaps4rails
-      # end
-
-      @date = params[:date].nil? ? Date.today : Date.parse(params[:date])
+        @date = params[:date].nil? ? Date.today : Date.parse(params[:date])
+      rescue => e
+        flash.now e.message
+      end
 
       @station ||= Station.first
-      @json ||= @station.geolocation.to_gmaps4rails
+      # @json ||= @station.geolocation
+      @json = current_user.geolocation
       # @trains ||= @station.trains
     end
   end
