@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '4.1.7'
 
 gem 'bcrypt-ruby'
 
-gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.3.0'
+gem 'sass-rails', '>= 3.2'
+gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'geocoder'
-gem 'sass-rails',   '~> 3.2.3'
-gem "slim", ">= 2.0.0.pre.6"
-gem "haml2slim", ">= 0.4.6", :group => :development
-gem "haml-rails", ">= 0.4", :group => :development
-gem "gmaps4rails", "~> 1.5.6"
+gem 'slim'
+gem 'gmaps4rails', '~> 1.5.6'
+gem 'coffee-rails'
 
 group :development do
   gem 'pry'
@@ -27,17 +27,3 @@ group :test do
 end
 
 gem 'pg'
-
-
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
-

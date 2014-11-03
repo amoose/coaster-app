@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   host: localhost
-  username: appdev
+  # username: postgres
   database: coaster
 
 # Warning: The database defined as "test" will be erased and

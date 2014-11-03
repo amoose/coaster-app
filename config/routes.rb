@@ -4,20 +4,20 @@ Coaster::Application.routes.draw do
   # first created -> highest priority.
 
   resources :users
-  match '/users/:id/update_geolocation', to: 'users#update_geolocation'
+  patch '/users/:id/update_geolocation', to: 'users#update_geolocation'
   resources :sessions,        only: [:new, :create, :destroy]
   resources :destinations
   resources :stations
 
   root to: 'static_pages#home'
-  match '/help',      to: 'static_pages#help'
-  match '/about',     to: 'static_pages#about'
-  match '/contact',   to: 'static_pages#contact'
+  get '/help',      to: 'static_pages#help'
+  get '/about',     to: 'static_pages#about'
+  get '/contact',   to: 'static_pages#contact'
 
-  match '/locator',   to: 'users#locator'
-  match '/signup',    to: 'users#new'
-  match '/signin',    to: 'sessions#new'
-  match '/signout',   to: 'sessions#destroy', via: :delete
+  get '/locator',   to: 'users#locator'
+  get '/signup',    to: 'users#new'
+  get '/signin',    to: 'sessions#new'
+  get '/signout',   to: 'sessions#destroy', via: :delete
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
