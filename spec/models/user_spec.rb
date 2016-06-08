@@ -1,3 +1,6 @@
+require 'spec_helper'
+require 'rails_helper'
+
 # == Schema Information
 #
 # Table name: users
@@ -15,8 +18,16 @@
 #  tracking        :boolean          default(FALSE)
 #
 
-require 'spec_helper'
+describe User, :type => :model do
 
-describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @user = FactoryGirl.create :user
+  end
+
+  it "has a expected attributes" do
+    expect(@user).to have_attributes(name: "Lazslo",
+                                     email: "lazslo@dmail.com",
+                                    password: "imadog",
+                                    password_confirmation: "imadog")
+  end
 end

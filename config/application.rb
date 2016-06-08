@@ -54,5 +54,6 @@ module Coaster
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+    config.generators.test_framework :rspec
   end
 end
