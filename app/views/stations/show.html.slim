@@ -1,9 +1,14 @@
 h3
 	= @station.name
 
+p
+	= @station.address
+
+br
+
 h4
 	| Trains
 
 = render :partial => 'shared/schedule', :locals => { :schedule => @trains }
 
-= debug @station.trains
+= render :partial => 'shared/map', :object => @json

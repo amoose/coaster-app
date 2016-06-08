@@ -4,30 +4,27 @@ class StaticPagesController < ApplicationController
     if signed_in?
 
       geolocs = Geolocation.near(current_user.geolocation.address.nil? ? current_user.geolocation.fetch_address : current_user.geolocation.address).where(:geocodeable_type => 'Station')
-      geolocs.each do |loc|
-        @stations << Station.find(loc.geocodeable_id)
-      end
+      # geolocs.each do |loc|
+      #   @stations << Station.find(loc.geocodeable_id)
+      # end
 
-      @station = @stations.first
-      @trains =   []
-      station_geolocations =     []
+      # @stations = Station.where(:id => geolocs.map(&:geocodeable_id))
 
-      if @station
-        @station.trains.each do |train|
-          @trains << train if train.departs?
-        end
+      begin
+        @station = Station.where(:id => geolocs.first.geocodeable_id).first
+        @trains = Train.departing(@station)
+        station_geolocations =     []
 
-        @stations.each do |station|
-          station_geolocations << station.geolocation
-        end
 
-        # @json = Geolocation.where
-        @json = station_geolocations.to_gmaps4rails
+        @date = params[:date].nil? ? Date.today : Date.parse(params[:date])
+      rescue Exception => e
+        # flash.now e.message
       end
 
       @station ||= Station.first
-      @json ||= @station.geolocation.to_gmaps4rails
-      @trains ||= @station.trains
+      # @json ||= @station.geolocation
+      @json = current_user.geolocation
+      # @trains ||= @station.trains
     end
   end
 

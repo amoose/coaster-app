@@ -16,3 +16,6 @@
 
 /.ssh
 .DS_Store
+
+push_db.sh
+coaster.dump

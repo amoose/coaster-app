@@ -1,1 +1,57 @@
-= gmaps4rails(json)
+javascript:
+  $(function() {
+    var map = window.map;
+    var maxZoomService;
+    function initialize() {
+      var mapOptions = {
+         zoom: 11,
+        center: new google.maps.LatLng(#{map.latlon}),
+        mapTypeId: google.maps.MapTypeId.HYBRID
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+      var bounds = new google.maps.LatLngBounds();
+      maxZoomService = new google.maps.MaxZoomService();
+      google.maps.event.addListener(map, 'click', showMaxZoom);
+      station_loc = new google.maps.LatLng(#{@station.geolocation.latlon})
+      marker = new google.maps.Marker({
+          map:map,
+          draggable:false,
+          animation: google.maps.Animation.DROP,
+          position: station_loc
+        });
+      user_loc =   new google.maps.LatLng(#{current_user.geolocation.latlon});
+      bounds.extend(user_loc);
+      bounds.extend(station_loc);
+      map.fitBounds(bounds);
+	       //var panoramaOptions = {
+	      //  position: station_loc,
+	      //  pov: {
+	      //    heading: #{current_user.geolocation.bearing_to(@station.geolocation.latlon)},
+	      //    pitch: 10
+	      //  }
+	      //};
+	      //var panorama = new google.maps.StreetViewPanorama(document.getElementById('map-canvas'),panoramaOptions);
+	      //map.setStreetView(panorama);
+      google.maps.event.addListenerOnce(map, 'bounds_changed', showMaxZoom(map));
+      window.map = map;
+    }
+    function showMaxZoom(map) {
+      var delay = 2000
+      maxZoomService.getMaxZoomAtLatLng(map.getCenter(), function(response) {
+        if (response.status != google.maps.MaxZoomStatus.OK) {
+          alert('Error in MaxZoomService');
+          return;
+        } else {
+        	console.log('max zoom is: '+response.zoom)
+        	//map.setZoom(response.zoom)
+        }
+        //map.panTo(e.latLng);
+        var t = setTimeout("window.map.panTo(new google.maps.LatLng(#{@station.geolocation.latlon}));",delay);
+        var t2 = setTimeout("window.map.setZoom("+response.zoom+");",delay+500)
+      });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+  });
+

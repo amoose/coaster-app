@@ -40,6 +40,10 @@ class Geolocation < ActiveRecord::Base
 	  end
 	end
 
+  def latlon
+    "#{self.latitude},#{self.longitude}"
+  end
+
   def latlon_changed?
   	if self.latitude != Geolocation.find(self.id).latitude or self.longitude != Geolocation.find(self.id).longitude
   		return true
