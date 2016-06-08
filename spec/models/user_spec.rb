@@ -24,10 +24,12 @@ describe User, :type => :model do
     @user = FactoryGirl.create :user
   end
 
-  it "has a expected attributes" do
+  it "has expected attributes" do
     expect(@user).to have_attributes(name: "Lazslo",
                                      email: "lazslo@dmail.com",
-                                    password: "imadog",
-                                    password_confirmation: "imadog")
+                                     password: "imadog",
+                                     password_confirmation: "imadog",
+                                     password_digest: /\A\S{60}\z/,
+                                     remember_token: /\A\S{22}\z/)
   end
 end
