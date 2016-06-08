@@ -22,6 +22,7 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'sqlite3'
+  gem 'simplecov', :require => false
 end
 
 group :development, :test do
