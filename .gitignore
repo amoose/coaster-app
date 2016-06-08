@@ -16,3 +16,4 @@
 
 /.ssh
 .DS_Store
+/public/assets
