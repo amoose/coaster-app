@@ -13,7 +13,7 @@ class StationsController < ApplicationController
 	def show
 		@station = Station.find params[:id]
 		@date = params[:date].nil? ? Date.today : Date.parse(params[:date])
-		@trains = []
-		@station.trains.each { |train| @trains << train if train.departs?(@date) }
+		@trains = Train.departing(@station)
+		@json = @station.geolocation.to_gmaps4rails
 	end
 end

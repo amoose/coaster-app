@@ -9,9 +9,11 @@ namespace :seed do
       puts 'AN ERROR OCCURRED READING trains.yml'
     end
 
+    now = Time.zone.now
+
     seed[:zones].each do |zone|
         Zone.create(:name => zone.second['name'])
-        puts "created: #{zone.second['name']}"
+        puts "zone created: #{zone.second['name']}"
     end
 
     seed[:stations].each do |station|
@@ -24,25 +26,29 @@ namespace :seed do
                 :zip => station.last['zip'].to_s,
                 :zone => Zone.find(station.last['zone'])
             )
-        puts "created: #{station.first}"
+        puts "station created: #{station.first}"
 
             station.last['trains'].each do |train|
                 # binding.pry
                 Train.create(
                     :name => train.first,
-                    :departure_time => Time.parse(train.last['departure_time']),
+                    :departure_time => Time.zone.parse(train.last['departure_time']).utc.to_s(:db),
                     :direction => train.last['direction'],
                     :station => Station.find_by_name(station.first),
                     :recurring => train.last['recurring'],
                     :completed => train.last['completed'],
                     :recurring_value => train.last['recurring_value']
                 )
-                puts "created: #{train.first}"
+                puts "train created: #{train.first}"
         end
     end
 
     User.create(:name => 'amos', :email => 'a+admin@tynsax.com', :password => 'foobar', :password_confirmation => 'foobar', :admin => true, :ip_address => '127.0.0.1')
+    puts 'user created: admin'
     User.create(:name => 'moose', :email => 'a+moose@tynsax.com', :password => 'foobar', :password_confirmation => 'foobar', :admin => false, :ip_address => '127.0.0.1')
+    puts 'user created: moose'
+
+    Train.all.each {|t| t.departure_time = t.departure_time+1.hour; t.save}
   end
 
 
@@ -73,7 +79,7 @@ namespace :seed do
                 # binding.pry
                 Train.create(
                     :name => train.first,
-                    :departure_time => Time.parse(train.last['departure_time']),
+                    :departure_time => Time.zone.parse(train.last['departure_time']).utc,
                     :direction => train.last['direction'],
                     :station => Station.find_by_name(station.first),
                     :recurring => train.last['recurring'],
