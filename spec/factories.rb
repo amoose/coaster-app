@@ -1,9 +1,12 @@
+require 'ipaddr'
+
 FactoryGirl.define do
   factory :user do
     name "Lazslo"
     email "lazslo@dmail.com"
     password "imadog"
     password_confirmation "imadog"
+    ip_address {IPAddr.new(10*2**24 + rand(2**24),Socket::AF_INET).to_s}
   end
 
   factory :station do

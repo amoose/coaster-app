@@ -33,4 +33,8 @@ describe User, :type => :model do
                                      remember_token: /\A\S{22}\z/)
     expect(User.find_by(name: "Lazslo"))
   end
+
+  it "sets a geolocation" do
+    expect(@user).to respond_to(:geolocation)
+  end
 end
