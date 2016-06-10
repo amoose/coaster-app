@@ -11,6 +11,18 @@ module SpecTestHelper
     valid_params.merge(gar: "bage")
   end
 
+  def session_valid_params
+    { session:
+      { email: @user.email,
+        password: @user.password }}
+  end
+
+  def session_invalid_params
+    { session:
+      { email: @user.email,
+        password: "wrongpassword" }}
+  end
+
   def sign_in_user
     valid_params
 
