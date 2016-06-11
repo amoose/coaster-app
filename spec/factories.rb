@@ -27,6 +27,17 @@ FactoryGirl.define do
     completed false
     recurring_value {{"days"=>["mon", "tue", "wed", "thu", "fri", "sat", "sun"], next_date: nil}}
   end
+
+  factory :destination do
+    name "A place"
+    address1 "123 aplace ave"
+    address2 ""
+    city "A City"
+    state "A State"
+    zip "12345"
+    user_id ""
+
+  end
 end
 
 

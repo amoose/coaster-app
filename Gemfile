@@ -23,6 +23,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'sqlite3'
   gem 'simplecov', :require => false
+  gem 'rspec-json_expectations'
+  # gem 'rspec-mocks'
 end
 
 group :development, :test do

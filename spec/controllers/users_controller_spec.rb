@@ -46,10 +46,9 @@ describe UsersController, :type => :controller do
   end
 
   describe 'DELETE destroy', :focus => true do
-    #TODO: figure out how add admin status to user
-
     it 'deletes a user' do
-      sign_in_admin
+      allow(controller).to receive_messages(signed_in_user: true,
+                                            admin_user: true)
 
       expect {
         delete :destroy, { id: @user.id }

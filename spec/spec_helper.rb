@@ -1,5 +1,7 @@
 require 'support/factory_girl'
 require 'support/spec_test_helper'
+require "rspec/json_expectations"
+# require 'rspec/mocks'
 
 require 'simplecov'
 SimpleCov.start 'rails'

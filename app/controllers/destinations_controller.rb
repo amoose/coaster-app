@@ -42,7 +42,7 @@ class DestinationsController < ApplicationController
   # POST /destinations
   # POST /destinations.json
   def create
-    @destination = Destination.new(params[:destination])
+    @destination = Destination.new(destination_params)
 
     respond_to do |format|
       if @destination.save
@@ -61,7 +61,7 @@ class DestinationsController < ApplicationController
     @destination = Destination.find(params[:id])
 
     respond_to do |format|
-      if @destination.update_attributes(params[:destination])
+      if @destination.update_attributes(destination_params)
         format.html { redirect_to @destination, notice: 'Destination was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,4 +82,17 @@ class DestinationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def destination_params
+      #TODO permit all neccessary params
+      params.require(:destination).permit(:id,
+                                          :name,
+                                          :address1,
+                                          :address2,
+                                          :city,
+                                          :state,
+                                          :zip,
+                                          :user_id)
+    end
 end
