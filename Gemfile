@@ -16,14 +16,21 @@ gem 'gmaps4rails', '~> 1.5.6'
 gem 'coffee-rails'
 
 group :development do
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-nav'
   gem 'annotate'
 end
 
 group :test do
+  gem 'factory_girl_rails'
   gem 'sqlite3'
+  gem 'simplecov', :require => false
+end
+
+group :development, :test do
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'pry-nav'
+  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 gem 'pg'
