@@ -13,6 +13,18 @@ module SpecTestHelper
   end
 
 # Session Controller Helpers
+
+  def new_session
+    original_controller = @controller
+
+    @controller = SessionsController.new
+
+    post :create, {session: {email: @user.email, password: @user.password}}
+
+    @controller = original_controller
+
+  end
+
   def session_valid_params
     { session:
       { email: @user.email,
