@@ -23,7 +23,8 @@ class Train < ActiveRecord::Base
   serialize :recurring_value, Hash
 
   def next_departure(date=Date.today)
-    if self.departs?
+    # if self.departs? only works if date=Date.today
+    if self.departs?(date)
 			self.departure
     end
   end
