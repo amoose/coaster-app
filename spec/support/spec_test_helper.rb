@@ -102,6 +102,15 @@ module SpecTestHelper
     new_hash[:destination][:name] = "Updated Name"
     new_hash
   end
+
+  # Static Pages Controller Helper
+  def set_user_location(user)
+    geo = user.geolocation
+    geo.latitude = 32.7157
+    geo.longitude = -117.1611
+    geo.fetch_address
+    geo.save
+  end
 end
 
 

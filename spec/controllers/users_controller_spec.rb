@@ -36,11 +36,14 @@ describe UsersController, :type => :controller do
       end
     end
 
-    context 'with invalid params' do
-      it 'does not create a user' do
+    context 'with invalid params', focus: :true do
+      it 'only has valid attributes' do
         expect {
-          post :create, invalid_params
-        }.to raise_error(ActionController::ParameterMissing)
+          post :create, { user: invalid_params }
+        }.to change(User, :count).by(1)
+
+        expect(assigns(:user)).to have_attributes(valid_params)
+        expect(assigns(:user)).not_to respond_to(:gar)
       end
     end
   end
