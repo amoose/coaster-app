@@ -34,8 +34,9 @@ class Station < ActiveRecord::Base
   # end
 
   def departing(date=Date.today)
-    self.trains.each do |train|
-      [] << train if train.departs?(date)
-    end
+    # self.trains.each do |train|
+    #   [] << train if train.departs?(date)
+    # end
+    self.trains.select {|train| train.departs?(date)}
   end
 end
