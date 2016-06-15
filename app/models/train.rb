@@ -18,7 +18,7 @@ require 'date'
 #
 
 class Train < ActiveRecord::Base
-  attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value
+  # attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value
   belongs_to :station
   serialize :recurring_value, Hash
 

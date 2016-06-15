@@ -14,7 +14,7 @@
 #
 
 class Geolocation < ActiveRecord::Base
-  attr_accessible :address, :latitude, :longitude, :accuracy
+  # attr_accessible :address, :latitude, :longitude, :accuracy
   belongs_to :geocodeable, :polymorphic => true
   geocoded_by :address, :if => :address_changed?
   reverse_geocoded_by :latitude, :longitude
