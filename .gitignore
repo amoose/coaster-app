@@ -20,3 +20,4 @@ coverage
 /.ssh
 .DS_Store
 /public/assets
+/config/secrets.yml
