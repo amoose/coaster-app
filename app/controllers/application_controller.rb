@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.development?
       ActionDispatch::Request.class_eval do
         def remote_ip
-          Rails.application.secrets[:dev_ip]
+          '74.115.209.58'
         end
       end
     end
