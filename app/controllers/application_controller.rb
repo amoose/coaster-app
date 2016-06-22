@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
 
+  before_filter :development_ip
+
 
   def correct_user
   	begin
@@ -20,5 +22,14 @@ class ApplicationController < ActionController::Base
   def time_now
   	t = Time.now
   	# Time.new(2000,1,1,t.hour,t.min,t.sec)
+  end
+  def development_ip
+    if Rails.env.development?
+      ActionDispatch::Request.class_eval do
+        def remote_ip
+          '74.115.209.58'
+        end
+      end
+    end
   end
 end
