@@ -20,7 +20,7 @@ class Geolocation < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode
 
-  acts_as_gmappable
+  # acts_as_gmappable DEPRECATED
 
   # def address
   #   @address ||= self.fetch_address

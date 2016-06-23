@@ -1,2 +1,16 @@
-div id="map-wrap"
-	| &nbsp;
+.map_container#map-wrap
+  div class='gmaps4rails_map' id="gmaps"
+  	| &nbsp;
+
+javascript:
+
+  $( document ).ready(function() {
+    handler = Gmaps.build('Google');
+    handler.buildMap( { provider: {}, internal: { id: 'gmaps' }}, function(){
+      var markers = handler.addMarkers(#{map});
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            handler.map.centerOn()
+    })
+  });
+

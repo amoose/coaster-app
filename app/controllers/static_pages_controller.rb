@@ -22,11 +22,16 @@ class StaticPagesController < ApplicationController
         end
 
         # @json = Geolocation.where
-        @json = station_geolocations.to_gmaps4rails
+        # @json = station_geolocations.to_gmaps4rails
+        @gmaps ||= Gmaps4rails.build_markers(station_geolocations) do |geo, marker|
+          marker.lat geo.latitude
+          marker.lng geo.longitude
+        end
       end
 
+      # @json ||= @station.geolocation.to_gmaps4rails
+      @json = @gmaps.to_json.html_safe
       @station ||= Station.first
-      @json ||= @station.geolocation.to_gmaps4rails
       @trains ||= @station.trains
     end
   end

@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require underscore
 //= require_tree .

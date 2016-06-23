@@ -6,10 +6,11 @@
 
 	= render :partial => 'station', :object => @station
 	= render :partial => 'schedule', :object => @trains
+	= render :partial => 'map', :object => @json
 
 	/ = debug @station.trains
 	hr
-	= gmaps4rails(@json)
+	/ = gmaps4rails(@json)
 - else
 	h3
 		| Not logged in.
