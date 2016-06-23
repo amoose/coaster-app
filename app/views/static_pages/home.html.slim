@@ -4,9 +4,11 @@
 	 = current_user.name
 	/ = render :partial => 'map'
 
+	= render :partial => 'map', locals: {stations: @station_markers,
+																			 user: @user_marker}
 	= render :partial => 'station', :object => @station
 	= render :partial => 'schedule', :object => @trains
-	= render :partial => 'map', :object => @json
+
 
 	/ = debug @station.trains
 	hr
