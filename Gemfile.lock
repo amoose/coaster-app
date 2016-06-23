@@ -70,7 +70,7 @@ GEM
     geocoder (1.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    gmaps4rails (1.5.6)
+    gmaps4rails (2.1.2)
     hike (1.2.3)
     i18n (0.7.0)
     jquery-rails (3.1.2)
@@ -198,7 +198,7 @@ DEPENDENCIES
   coffee-rails
   factory_girl_rails
   geocoder
-  gmaps4rails (~> 1.5.6)
+  gmaps4rails
   jquery-rails
   pg
   pry

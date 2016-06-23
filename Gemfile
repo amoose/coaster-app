@@ -12,7 +12,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'geocoder'
 gem 'slim'
-gem 'gmaps4rails', '~> 1.5.6'
+gem 'gmaps4rails'
 gem 'coffee-rails'
 
 group :development do
