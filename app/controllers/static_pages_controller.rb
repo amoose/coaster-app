@@ -26,11 +26,20 @@ class StaticPagesController < ApplicationController
         @station_gmaps ||= Gmaps4rails.build_markers(station_geolocations) do |geo, marker|
           marker.lat geo.latitude
           marker.lng geo.longitude
+          marker.infowindow Station.find(geo.geocodeable_id).name
+          marker.picture({ url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+                           width: 50,
+                           height: 50 })
+
         end
 
         @user_gmaps ||= Gmaps4rails.build_markers(@current_user.geolocation) do |geo, marker|
           marker.lat geo.latitude
           marker.lng geo.longitude
+          marker.infowindow User.find(geo.geocodeable_id).name
+          marker.picture({ url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+                           width: 50,
+                           height: 50 })
         end
       end
 

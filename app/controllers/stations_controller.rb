@@ -10,6 +10,7 @@ class StationsController < ApplicationController
 		@station_markers = Gmaps4rails.build_markers(geolocations) do |geo, marker|
 			marker.lat geo.latitude
 			marker.lng geo.longitude
+			marker.infowindow Station.find(geo.geocodeable_id).name
 		end
 
 		@json = @station_markers.to_json.html_safe

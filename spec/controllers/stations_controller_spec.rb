@@ -15,7 +15,8 @@ describe StationsController, :type => :controller do
     it 'loads station geolocations as json', focus: true do
       get :index
       @test_station_pos = { lat: @test_station.geolocation.latitude,
-                            lng: @test_station.geolocation.longitude }
+                            lng: @test_station.geolocation.longitude,
+                            infowindow: @test_station.name }
 
       expect(assigns(:json)).to include(@test_station_pos.to_json)
     end
