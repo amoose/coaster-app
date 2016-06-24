@@ -37,7 +37,7 @@ class StaticPagesController < ApplicationController
           marker.lat geo.latitude
           marker.lng geo.longitude
           marker.infowindow User.find(geo.geocodeable_id).name
-          marker.picture({ url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+          marker.picture({ url: user_marker_image(@current_user),
                            width: 50,
                            height: 50 })
         end
@@ -64,5 +64,29 @@ class StaticPagesController < ApplicationController
   	# emptry1!!!
   end
 
+  private
+    def user_marker_image(user)
+      if gravatar?(user)
+        gravatar_url(user)
+      else
+        "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+      end
+    end
 
+    def gravatar?(user, options = {})
+      hash = Digest::MD5.hexdigest(user.email.to_s.downcase)
+      options = { :rating => 'x', :timeout => 2 }.merge(options)
+      http = Net::HTTP.new('www.gravatar.com', 80)
+      http.read_timeout = options[:timeout]
+      response = http.request_head("/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar")
+      response.code != '302'
+    # rescue StandardError, Timeout::Error
+    #   true  # Don't show "no gravatar" if the service is down or slow
+    end
+
+    def gravatar_url(user)
+      gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+      size = 50
+      gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+    end
 end
