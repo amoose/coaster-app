@@ -10,7 +10,7 @@ describe Train, type: :model do
   end
 
   it 'returns next departure on given date' do
-    expect(@train.next_departure(@date).to_s).to include("2016-06-13")
+    expect(@train.next_departure(@date)).to be_a(Time)
     expect(@train2.next_departure(@date)).to eq(nil)
   end
 
