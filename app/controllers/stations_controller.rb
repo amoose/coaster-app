@@ -7,10 +7,12 @@ class StationsController < ApplicationController
 			geolocations << station.geolocation
 		end
 
-		@json = Gmaps4rails.build_markers(geolocations) do |geo, marker|
+		@station_markers = Gmaps4rails.build_markers(geolocations) do |geo, marker|
 			marker.lat geo.latitude
 			marker.lng geo.longitude
 		end
+
+		@json = @station_markers.to_json.html_safe
 	end
 
 	def show

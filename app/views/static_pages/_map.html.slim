@@ -9,7 +9,6 @@ javascript:
     handler.buildMap( { provider: { zoom: 4}, internal: { id: 'gmaps' }}, function(){
       var markers = handler.addMarkers(#{stations});
             handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
             handler.map.centerOn(#{user});
             handler.getMap().setZoom(12);
     })
