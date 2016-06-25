@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
     if Rails.env.development?
       ActionDispatch::Request.class_eval do
         def remote_ip
-          '74.115.209.58'
+          uri = URI.parse('http://api.ipify.org?format=json')
+          http = Net::HTTP.new(uri.host, uri.port)
+
+          request = Net::HTTP::Get.new(uri.request_uri)
+          response = JSON.parse(http.request(request).body)["ip"]
         end
       end
     end
