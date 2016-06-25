@@ -24,5 +24,6 @@ html
 
 - if Rails.env.development?
   hr
+  = debug(request.remote_ip)
   = debug(params)
   / = debug(request.env)
