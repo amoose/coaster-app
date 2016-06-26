@@ -10,6 +10,7 @@
 	function coaster_update_coords(position) {
 		user_id = $('#user_id').val()
 		$.ajax({
+			type: 'PATCH',
 		  url: '/users/'+user_id+'/update_geolocation',
 		  data: { latitude: position.coords.latitude, longitude: position.coords.longitude },
 		  success: function(data) {
