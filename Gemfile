@@ -14,6 +14,7 @@ gem 'geocoder'
 gem 'slim'
 gem 'gmaps4rails', '~> 1.5.6'
 gem 'coffee-rails'
+gem 'pdf-reader'
 
 group :development do
   gem 'annotate'
