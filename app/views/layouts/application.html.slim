@@ -9,7 +9,7 @@ html
     = javascript_include_tag "application"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = render 'layouts/shim'
-
+    = javascript_include_tag 'https://use.fontawesome.com/189fe674ce.js'
 
 
 
@@ -24,5 +24,4 @@ html
 
 - if Rails.env.development?
   hr
-  = debug(params)
-  / = debug(request.env)
+  

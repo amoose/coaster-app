@@ -11,6 +11,8 @@
 	hr
 	= gmaps4rails(@json)
 - else
-	h3
-		| Not logged in.
+	i.fa.fa-spinner.fa-spin.fa-5x.fa-compass
+
+	/ h3
+	/ 	| Not logged in.
 		/ = debug @stations
