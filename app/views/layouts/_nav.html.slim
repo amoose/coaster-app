@@ -19,5 +19,6 @@ header
             li
               = link_to "Sign Out", signout_path, method: 'delete'
           - else
-            = nav_link 'Sign in', signin_path, {}, {:wrapper => 'li', :selected_class => 'active'}
             = nav_link 'Sign Up', signup_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+        - if signed_in? == false
+          = render :partial => 'sign_in'
