@@ -11,3 +11,4 @@ rvm:
 sudo: false
 before_script:
   - bundle exec rake db:migrate
+  - cp config/secrets.yml.example config/secrets.yml
