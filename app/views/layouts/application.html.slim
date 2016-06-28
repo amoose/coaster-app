@@ -8,12 +8,8 @@ html
     = csrf_meta_tags
     = javascript_include_tag "application"
 
-    <script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyCCe5VauNKbRn8PidIxl9wICa1RB2FKTP8"></script>
+    = javascript_include_tag "//maps.google.com/maps/api/js?v=3.23&key=#{Rails.application.secrets.google_key}"
 
-    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
-
-
-    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = render 'layouts/shim'
 
