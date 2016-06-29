@@ -12,9 +12,13 @@ describe StationsController, :type => :controller do
       expect(assigns(:stations)).to include(@test_station)
     end
 
-    it 'loads station geolocations' do
+    it 'loads station geolocations as json', focus: true do
       get :index
-      expect(assigns(:json)).to include(@test_station.geolocation.to_gmaps4rails)
+      @test_station_pos = { lat: @test_station.geolocation.latitude,
+                            lng: @test_station.geolocation.longitude,
+                            infowindow: @test_station.name }
+
+      expect(assigns(:json)).to include(@test_station_pos.to_json)
     end
   end
 

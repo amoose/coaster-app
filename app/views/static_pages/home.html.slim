@@ -4,12 +4,15 @@
 	 = current_user.name
 	/ = render :partial => 'map'
 
+	= render :partial => 'map', locals: {stations: @station_markers,
+																			 user: @user_marker}
 	= render :partial => 'station', :object => @station
 	= render :partial => 'schedule', :object => @trains
 
+
 	/ = debug @station.trains
 	hr
-	= gmaps4rails(@json)
+
 - else
 	h3
 		| Not logged in.
