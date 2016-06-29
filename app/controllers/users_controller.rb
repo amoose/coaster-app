@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update, :index, :destroy]
-  before_filter :correct_user,   only: [:edit, :update, :show]
+  before_filter :signed_in_user, only: [:edit, :update, :index, :destroy, :update_geolocation]
+  before_filter :correct_user,   only: [:edit, :update, :show, :update_geolocation]
   before_filter :admin_user,     only: :destroy
   skip_before_filter :verify_authenticity_token, :only => [:update_geolocation]
 

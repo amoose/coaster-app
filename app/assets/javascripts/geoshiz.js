@@ -33,7 +33,8 @@
 		$('.lcontent').append('<p class="error">An error occurred mapping your geolocation.<br /><br />' + e + '	</p>');
 	}
 
-
-$(function() {
-	coaster_enable_geolocation();
-});
+if ( $('#user_id').val() != undefined) {
+	$(function() {
+		coaster_enable_geolocation();
+	});
+}
