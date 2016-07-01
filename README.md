@@ -4,6 +4,7 @@
 A simple app which makes riding the coaster a <i>breeze</i>.
 
 ![Travis CI Build Status](https://api.travis-ci.org/amoose/coaster-app.svg)
+[![security](https://hakiri.io/github/amoose/coaster-app/master.svg)](https://hakiri.io/github/amoose/coaster-app/master)
 
 ## Developing
 
