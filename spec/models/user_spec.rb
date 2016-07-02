@@ -18,23 +18,55 @@ require 'rails_helper'
 #  tracking        :boolean          default(FALSE)
 #
 
-describe User, :type => :model do
+describe User, type: :model do
+  context 'with valid parameters' do
+    before do
+      @user = FactoryGirl.create :user
+    end
 
-  before do
-    @user = FactoryGirl.create :user
+    it "has expected attributes" do
+      expect(@user).to have_attributes(name: "Lazslo",
+                                       email: "lazslo@dmail.com",
+                                       password: "imadog",
+                                       password_confirmation: "imadog",
+                                       password_digest: /\A\S{60}\z/,
+                                       remember_token: /\A\S{22}\z/)
+      expect(User.find_by(name: "Lazslo"))
+    end
+
+    it "sets a geolocation" do
+      expect(@user.geolocation).not_to eq(nil)
+    end
+
+    it 'creates a remember token' do
+      expect(@user.remember_token).not_to eq(nil)
+    end
   end
 
-  it "has expected attributes" do
-    expect(@user).to have_attributes(name: "Lazslo",
-                                     email: "lazslo@dmail.com",
-                                     password: "imadog",
-                                     password_confirmation: "imadog",
-                                     password_digest: /\A\S{60}\z/,
-                                     remember_token: /\A\S{22}\z/)
-    expect(User.find_by(name: "Lazslo"))
+  context 'with password less than 6 characters' do
+    it 'does not create a user' do
+      expect(FactoryGirl.build(:user, password: "foob",
+                               password_confirmation: "foob")).not_to be_valid
+    end
   end
 
-  it "sets a geolocation" do
-    expect(@user).to respond_to(:geolocation)
+  context 'with differing password confirmation' do
+    it 'does not create a user' do
+      expect(FactoryGirl.build(:user, password: "foobar",
+                               password_confirmation: "raboof")).not_to be_valid
+    end
+  end
+
+  context 'with invalid email' do
+    it 'does not create a user' do
+      expect(FactoryGirl.build(:user, email: 'invalidemail')).not_to be_valid
+    end
+  end
+
+  context 'with same email' do
+    it 'does not create a user' do
+      FactoryGirl.create(:user)
+      expect(FactoryGirl.build(:user)).not_to be_valid
+    end
   end
 end
