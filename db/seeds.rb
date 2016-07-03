@@ -99,17 +99,21 @@ trips.each do |trip|
 #<GTFS::Stop:0x007fa1bc072d20 @intersection_code=nil, @lat="32.7175114861", @wheelchair_boarding="0", @code="28007", @lon="-117.170089506", @id="28007", @name_short="San Diego - Santa Fe Depot", @parent_station=nil, @name="San Diego - Santa Fe Depot", @reference_place=nil, @location_type="0", @place="CSTSDS", @zone_id="C7">
 # CURRENT STOP INFORMATIONZ
 #<GTFS::StopTime:0x007fa1b72326d8 @trip_id="11383779", @arrival_time="16:56:00", @departure_time="16:56:00", @stop_id="28007", @stop_sequence="1", @stop_headsign=nil, @pickup_type=nil, @drop_off_type=nil, @shape_dist_traveled=nil, @timepoint=nil>
-
-    train = Train.create(
-        name: trip.id.split(//).last(3).join,
-        departure_time: Time.parse(st.departure_time),
-        direction: get_direction(trip),
-        station_id: station_record.id,
-        completed: false,
-        recurring: true,
-        recurring_value: get_recurring_value(calendar)
-      )
-    friendly_put "Created train: #{train.name}"
+    begin
+      train = Train.create(
+          name: trip.id.split(//).last(3).join,
+          departure_time: Time.parse(st.departure_time).strftime("%I:%M%p"),
+          direction: get_direction(trip),
+          station_id: station_record.id,
+          completed: false,
+          recurring: true,
+          recurring_value: get_recurring_value(calendar)
+        )
+      friendly_put "Created train: #{train.name}"
+    rescue StandardError => e
+      friendly_put "ERROR! #{e.message}", :error
+      friendly_put st.inspect, :error
+    end
   end
 end
 
