@@ -1,15 +1,17 @@
 
 cache: bundler
 language: ruby
+sudo: false
 matrix:
+  include:
+    - rvm: 2.1.3
+    - rvm: 2.3.1
+    - rvm: 2.4.0-preview1
+  allow_failures:
+    - rvm: 2.4.0-preview1
   fast_finish: true
 notifications:
   email: false
-rvm:
-  - ruby-2.1.3
-  - ruby-2.3.1
-  - ruby-2.4.0-preview1
-sudo: false
 before_script:
   - bundle exec rake db:migrate
   - cp config/secrets.yml.example config/secrets.yml
