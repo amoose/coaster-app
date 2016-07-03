@@ -12,7 +12,7 @@ matrix:
         - CUSTOM_RUBY_VERSION=2.3.1
     - rvm: 2.4.0-preview1
       env:
-        - CUSTOM_RUBY_VERSION=2.4.0-preview1
+        - CUSTOM_RUBY_VERSION=2.4.0
   allow_failures:
     - rvm: 2.4.0-preview1
   fast_finish: true
