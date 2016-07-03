@@ -48,18 +48,7 @@ end
 friendly_put "Importing #{file.path}"
 source = GTFS::Source.build(file, {strict: false})
 
-# INVALID!!!!!!!!!!!!!!!!!!!
-# stations = source.stops.find_all {|s| s.location_type == '1' }
-# INVALID!!!!!!!!!!!!!!!!!!!!
 coaster_route = source.routes.find {|r| r.type == '2'}
-
-# stations.each do |station|
-#   station_record = Station.find_or_create_by(name: station.name) do |new_station|
-#     new_station.geolocation = Geolocation.create(latitude: station.lat, longitude: station.lon)
-#   end
-#   friendly_put 'Station: ' + station_record.name
-# end
-# friendly_put 'Done creating stations'
 
 
 friendly_put 'Parsing all stops... (this may take a while)', :warn
@@ -71,17 +60,8 @@ trips.each do |trip|
   # skip unless the calendar is current
   next unless is_current?(calendar.start_date, calendar.end_date)
 
-
   # fetch stop times for this current trip
   stop_times = source.stop_times.find_all {|st| st.trip_id == trip.id }
-
-  # DEBUG!
-  # trip_idz << t.id.split(//).last(3).join
-  # puts "VALID TRIP::"
-  # puts t.inspect
-  # puts "start_date: #{Date.parse(calendar.start_date)}  - end_date: #{Date.parse(calendar.end_date)}"
-  # puts calendar.inspect
-  # /DEBUG
 
   stop_times.each do |st|
     stop_station = source.stops.find {|s| s.id == st.stop_id }
@@ -90,7 +70,8 @@ trips.each do |trip|
       new_station.geolocation = Geolocation.create(latitude: stop_station.lat, longitude: stop_station.lon)
     end
     
-    # VALID TRIP::
+    friendly_put "Created #{station_record.name} Station" if station_record.new_record?
+# VALID TRIP::
 #<GTFS::Trip:0x007fa1cb0d1e88 @bikes_allowed="2", @route_id="398", @wheelchair_accessible="1", @direction_id="0", @headsign_short="Oceanside", @headsign="Oceanside", @block_id="b_39802", @shape_id="398_0_5", @service_id="C_SASCHoff_merged_11487280", @id="11383779", @direction_name="North">
 # start_date: 2016-06-05  - end_date: 2016-08-20
 #<GTFS::Calendar:0x007fa1c6141238 @service_id="C_SASCHoff_merged_11487280", @start_date="20160605", @end_date="20160820", 
