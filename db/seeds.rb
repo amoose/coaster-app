@@ -35,7 +35,7 @@ end
 remote_uri = 'http://www.gonctd.com/google_transit.zip'
 filename = 'data.zip'
 
-unless file = File.open("lib/data/#{filename}")
+unless File.file?(filename) && file = File.open("lib/data/#{filename}")
   tempfile = Tempfile.new(filename).tap do |file|
     file.binmode
     friendly_put('Downloading ' + remote_uri + ' to ' + file.path, :warn)
