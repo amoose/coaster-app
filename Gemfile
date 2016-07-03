@@ -4,7 +4,6 @@ ruby ENV['CUSTOM_RUBY_VERSION'] || '2.1.3'
 gem 'rails', '~> 4.2.5.1'
 
 gem 'bcrypt-ruby'
-
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
@@ -36,4 +35,5 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'rails_12factor', group: :production
 gem 'pg'
