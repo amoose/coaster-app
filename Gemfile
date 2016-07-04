@@ -19,6 +19,7 @@ gem 'colorize'
 
 group :development do
   gem 'annotate'
+  gem 'rubocop', require: false
 end
 
 group :test do
