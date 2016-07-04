@@ -16,7 +16,7 @@ header
           ul.nav.navbar-nav.navbar-right
             li
               = link_to "Sign Out", signout_path, method: 'delete'
-        - unless signed_in?
-          = render :partial => 'shared/sign_in'
-          ul.nav.navbar-nav.navbar-right
-            = nav_link 'Sign Up', signup_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+        / - unless signed_in?
+        /   = render :partial => 'shared/sign_in'
+        /   ul.nav.navbar-nav.navbar-right
+        /     = nav_link 'Sign Up', signup_path, {}, {:wrapper => 'li', :selected_class => 'active'}
