@@ -21,5 +21,6 @@ class StationsController < ApplicationController
 		@date = params[:date].nil? ? Date.today : Date.parse(params[:date])
 		@trains = []
 		@station.trains.each { |train| @trains << train if train.departs?(@date) }
+		@trains.sort! { |a,b| a.departure_time <=> b.departure_time }
 	end
 end
