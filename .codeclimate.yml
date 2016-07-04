@@ -42,3 +42,6 @@ exclude_paths:
 - spec/
 - vendor/
 - public/assets/
+addons:
+  code_climate:
+    repo_token: 9748bd787552ff0b13752dc85305c7a3a0691e59dbeeaa10cbc6ccbe81e7cdb4
