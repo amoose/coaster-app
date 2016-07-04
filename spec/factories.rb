@@ -25,7 +25,7 @@ FactoryGirl.define do
     station {Station.find_by(name: "Santa Fe Depot (San Diego)")}
     recurring true
     completed false
-    recurring_value {{"days"=>["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}}
+    recurring_value {{days: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}}
     next_date nil
   end
 
