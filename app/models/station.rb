@@ -19,6 +19,8 @@ class Station < ActiveRecord::Base
   has_one :geolocation, :as => :geocodeable
   has_many :trains
   before_save :set_geolocation
+  reverse_geocoded_by :get_lat, :get_lon
+  after_validation :reverse_geocode
 
   def full_address
   	address = self.address + ', ' + self.city + ', ' + self.zip
@@ -28,15 +30,20 @@ class Station < ActiveRecord::Base
   	self.geolocation ||= Geolocation.new(:address => self.full_address)
   end
 
-
-  # def self.near
-
-  # end
-
   def departing(date=Date.today)
     # self.trains.each do |train|
     #   [] << train if train.departs?(date)
     # end
     self.trains.select {|train| train.departs?(date)}
+  end
+
+  private
+
+  def get_lat
+    geolocation.latitude if geolocation
+  end
+
+  def get_lon
+    geolocation.longitude if geolocation
   end
 end
