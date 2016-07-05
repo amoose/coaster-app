@@ -16,8 +16,8 @@
 
 class Geolocation < ActiveRecord::Base
   # attr_accessible :address, :latitude, :longitude, :accuracy
-  belongs_to :geocodeable, :polymorphic => true
-  geocoded_by :address, :if => :address_changed?
+  belongs_to :geocodeable, polymorphic: true
+  geocoded_by :address, if: :address_changed?
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode
 
@@ -26,33 +26,31 @@ class Geolocation < ActiveRecord::Base
   # end
 
   def short_address
-  	begin
-	  	adr_short = ''
-	  	adr = address.split(",").values_at(0..1)
-	  	"#{adr[0]}, #{adr[1]}"
-	  rescue
-	  	begin
-	  		"#{latitude}, #{longitude}"
-	  	rescue
-	  		"Unknown"
-	  	end
-	  end
-	end
+    adr_short = ''
+    adr = address.split(',').values_at(0..1)
+    "#{adr[0]}, #{adr[1]}"
+  rescue
+    begin
+      "#{latitude}, #{longitude}"
+    rescue
+      'Unknown'
+    end
+  end
 
   def latlon_changed?
-  	if self.latitude != Geolocation.find(self.id).latitude or self.longitude != Geolocation.find(self.id).longitude
-  		return true
-  	else
-  		return false
-  	end
+    if latitude != Geolocation.find(id).latitude || longitude != Geolocation.find(id).longitude
+      return true
+    else
+      return false
+    end
   end
 
   def gmaps4rails_address
-  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    if self.address
-      self.address
+    # describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    if address
+      address
     else
-      self.fetch_address
+      fetch_address
     end
   end
 end

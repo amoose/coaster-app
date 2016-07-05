@@ -16,15 +16,15 @@
 #
 
 class Destination < ActiveRecord::Base
-  has_one :geolocation, :as => :geocodeable
+  has_one :geolocation, as: :geocodeable
   before_save :set_geolocation
   belongs_to :user
 
   def long_address
-  	address = self.address1 + ' ' + self.address2 + ', ' + self.city + ', ' + self.zip
+    address = address1 + ' ' + address2 + ', ' + city + ', ' + zip
   end
 
   def set_geolocation
-  	self.geolocation ||= Geolocation.new(:address => self.long_address)
+    self.geolocation ||= Geolocation.new(address: long_address)
   end
 end

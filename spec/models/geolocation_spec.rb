@@ -30,7 +30,7 @@ describe Geolocation, type: :model do
   context 'without an address' do
     it 'returns latitude and longitude' do
       @geolocation.address = nil
-      expect(@geolocation.short_address).to eq("32.7166066, -117.1695229")
+      expect(@geolocation.short_address).to eq('32.7166066, -117.1695229')
     end
   end
 
@@ -39,5 +39,4 @@ describe Geolocation, type: :model do
     @geolocation.latitude = 34.2349082349
     expect(@geolocation.latlon_changed?).to be_truthy
   end
-
 end

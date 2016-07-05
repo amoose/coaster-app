@@ -27,9 +27,7 @@ class Train < ActiveRecord::Base
 
   def next_departure(date=Date.today)
     # if self.departs? only works if date=Date.today
-    if self.departs?(date)
-			self.departure
-    end
+    departure if departs?(date)
   end
 
   def departs?(date=Date.today)

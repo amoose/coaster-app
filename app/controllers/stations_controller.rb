@@ -1,20 +1,20 @@
 class StationsController < ApplicationController
-	def index
-		@stations = Station.all
-		@json = nil
-		geolocations = []
-		@stations.each do |station|
-			geolocations << station.geolocation
-		end
+  def index
+    @stations = Station.all
+    @json = nil
+    geolocations = []
+    @stations.each do |station|
+      geolocations << station.geolocation
+    end
 
-		@station_markers = Gmaps4rails.build_markers(geolocations) do |geo, marker|
-			marker.lat geo.latitude
-			marker.lng geo.longitude
-			marker.infowindow Station.find(geo.geocodeable_id).name
-		end
+    @station_markers = Gmaps4rails.build_markers(geolocations) do |geo, marker|
+      marker.lat geo.latitude
+      marker.lng geo.longitude
+      marker.infowindow Station.find(geo.geocodeable_id).name
+    end
 
-		@json = @station_markers.to_json.html_safe
-	end
+    @json = @station_markers.to_json.html_safe
+  end
 
 	def show
 		@station = Station.find params[:id]

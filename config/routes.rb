@@ -40,13 +40,12 @@
 #
 
 Coaster::Application.routes.draw do
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   resources :users
   patch '/users/:id/update_geolocation', to: 'users#update_geolocation'
-  resources :sessions,        only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :destinations
   resources :stations
 

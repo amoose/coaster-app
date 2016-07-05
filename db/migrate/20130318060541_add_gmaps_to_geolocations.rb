@@ -1,5 +1,5 @@
 class AddGmapsToGeolocations < ActiveRecord::Migration
   def change
-  	add_column :geolocations, :gmaps, :boolean
+    add_column :geolocations, :gmaps, :boolean
   end
 end

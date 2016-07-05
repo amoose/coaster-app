@@ -23,18 +23,26 @@ class Station < ActiveRecord::Base
   after_validation :reverse_geocode
 
   def full_address
-  	address = self.address + ', ' + self.city + ', ' + self.zip
+    address = self.address + ', ' + city + ', ' + zip
   end
 
   def set_geolocation
-  	self.geolocation ||= Geolocation.new(:address => self.full_address)
+    self.geolocation ||= Geolocation.new(address: full_address)
   end
 
+<<<<<<< 383da8294493be95152025f16bf836541406797b
   def departing(date=Date.today)
+=======
+  # def self.near
+
+  # end
+
+  def departing(date = Date.today)
+>>>>>>> Rubocop first run
     # self.trains.each do |train|
     #   [] << train if train.departs?(date)
     # end
-    self.trains.select {|train| train.departs?(date)}
+    trains.select { |train| train.departs?(date) }
   end
 
   private

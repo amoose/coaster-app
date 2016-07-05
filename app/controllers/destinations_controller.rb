@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :correct_user, only: [:edit, :update]
   # GET /destinations
   # GET /destinations.json
   def index
@@ -26,7 +26,7 @@ class DestinationsController < ApplicationController
   # GET /destinations/new
   # GET /destinations/new.json
   def new
-    @destination = Destination.new :user => current_user, :city => request.location.city
+    @destination = Destination.new user: current_user, city: request.location.city
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,7 +49,7 @@ class DestinationsController < ApplicationController
         format.html { redirect_to @destination, notice: 'Destination was successfully created.' }
         format.json { render json: @destination, status: :created, location: @destination }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @destination.errors, status: :unprocessable_entity }
       end
     end
@@ -65,7 +65,7 @@ class DestinationsController < ApplicationController
         format.html { redirect_to @destination, notice: 'Destination was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @destination.errors, status: :unprocessable_entity }
       end
     end
@@ -84,15 +84,16 @@ class DestinationsController < ApplicationController
   end
 
   private
-    def destination_params
-      #TODO permit all neccessary params
-      params.require(:destination).permit(:id,
-                                          :name,
-                                          :address1,
-                                          :address2,
-                                          :city,
-                                          :state,
-                                          :zip,
-                                          :user_id)
-    end
+
+  def destination_params
+    # TODO: permit all neccessary params
+    params.require(:destination).permit(:id,
+                                        :name,
+                                        :address1,
+                                        :address2,
+                                        :city,
+                                        :state,
+                                        :zip,
+                                        :user_id)
+  end
 end

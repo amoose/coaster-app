@@ -5,7 +5,7 @@ class CreateGeolocations < ActiveRecord::Migration
       t.float :longitude
       t.string :address
 
-      t.references :geocodeable, :polymorphic => true
+      t.references :geocodeable, polymorphic: true
       t.timestamps
     end
   end

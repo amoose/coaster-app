@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rails_helper'
 
-describe SessionsController, :type => :controller do
+describe SessionsController, type: :controller do
   before do
     @user = FactoryGirl.create(:user)
   end
@@ -25,7 +25,7 @@ describe SessionsController, :type => :controller do
     end
   end
 
-  describe "DELETE destroy" do
+  describe 'DELETE destroy' do
     it 'signs user out' do
       post :create, session_valid_params
       expect(assigns(:current_user)).to eq(@user)
