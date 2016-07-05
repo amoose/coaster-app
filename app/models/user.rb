@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   has_one :geolocation, :as => :geocodeable, dependent: :destroy
 
-  has_many :destinations
+  has_many :destinations, dependent: :destroy
 
   private
     def create_remember_token
