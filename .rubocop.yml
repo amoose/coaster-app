@@ -3,6 +3,11 @@ AllCops:
     #exclude files that will likely not be used in the future
     - 'lib/tasks/seed.rake'
     - 'lib/tasks/db.rake'
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'config/initializers/simple_form*'
+    - 'db/migrate/*'
+    - 'vendor/**/*'
 
 Lint/ParenthesesAsGroupedExpression:
   Description: Checks for method calls with a space before the opening parenthesis.
