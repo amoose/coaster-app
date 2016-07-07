@@ -30,7 +30,7 @@ class Train < ActiveRecord::Base
   end
 
   def departs?(date=Date.today)
-  	self.recurring and self.recurring_value.has_key?('days') and self.recurring_value['days'].include? Date::ABBR_DAYNAMES[date.wday].downcase
+  	self.recurring and self.recurring_value.has_key?(:days) and self.recurring_value[:days].include? Date::ABBR_DAYNAMES[date.wday].downcase
   end
 
   def has_departed?(time=Time.now)
