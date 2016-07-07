@@ -6,6 +6,8 @@ javascript:
   $( document ).ready(function() {
     handler = Gmaps.build('Google');
     handler.buildMap( { provider: { zoom: 4}, internal: { id: 'gmaps' }}, function(){
+      //console.log(#{stations})
+      //console.log(#{user})
       var markers = handler.addMarkers(#{stations});
       var user_marker = handler.addMarkers(#{user}, { optimized: false });
             handler.bounds.extendWith(markers);

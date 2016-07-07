@@ -23,7 +23,7 @@ class Station < ActiveRecord::Base
   after_validation :reverse_geocode
 
   def full_address
-    address = self.address + ', ' + city + ', ' + zip
+    address + ', ' + city + ', ' + zip
   end
 
   def set_geolocation

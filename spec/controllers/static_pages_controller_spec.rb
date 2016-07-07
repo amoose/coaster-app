@@ -19,7 +19,7 @@ describe StaticPagesController, type: :controller do
 
     it 'finds nearby stations' do
       new_session
-      set_user_location(@user)
+      user_location(@user)
 
       get :home
 
@@ -33,7 +33,7 @@ describe StaticPagesController, type: :controller do
 
     it 'finds trains for nearby stations', focus: :true do
       new_session
-      set_user_location(@user)
+      user_location(@user)
 
       get :home
 

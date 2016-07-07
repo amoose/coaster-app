@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
     @stations = []
     if signed_in?
 
-      geolocs = Geolocation.near(current_user.geolocation.address.nil? ? current_user.geolocation.fetch_address : current_user.geolocation.address).where(geocodeable_type: 'Station')
+      geolocs = Geolocation.near(user_location).where(geocodeable_type: 'Station')
       geolocs.each do |loc|
         @stations << Station.find(loc.geocodeable_id)
       end
@@ -64,6 +64,10 @@ class StaticPagesController < ApplicationController
 
   private
 
+  def user_location
+    current_user.geolocation.address.nil? ? current_user.geolocation.fetch_address : current_user.geolocation.address
+  end
+
   def user_marker_image(user)
     if gravatar?(user)
       gravatar_url(user)
@@ -77,7 +81,8 @@ class StaticPagesController < ApplicationController
     options = { rating: 'x', timeout: 2 }.merge(options)
     http = Net::HTTP.new('www.gravatar.com', 80)
     http.read_timeout = options[:timeout]
-    response = http.request_head("/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar")
+    request_string = "/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar"
+    response = http.request_head(request_string)
     response.code != '302'
     # rescue StandardError, Timeout::Error
     #   true  # Don't show "no gravatar" if the service is down or slow
@@ -86,6 +91,6 @@ class StaticPagesController < ApplicationController
   def gravatar_url(user)
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
     size = 50
-    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+    "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
   end
 end

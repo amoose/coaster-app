@@ -6,7 +6,10 @@ module SessionsHelper
 
   def current_user=(user)
     @current_user = user
-    if @current_user && @current_user.ip_address != request.remote_ip && @current_user.geolocation.updated_at < 1.hour.ago
+    if @current_user &&
+       @current_user.ip_address != request.remote_ip &&
+       @current_user.geolocation.updated_at < 1.hour.ago
+
       @current_user.ip_address = request.remote_ip
       @current_user.save
     end
@@ -42,7 +45,6 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      puts 'NOT SIGNED IN'
       redirect_to signin_url, notice: 'Please sign in.'
     end
   end

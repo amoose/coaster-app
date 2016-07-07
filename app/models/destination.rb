@@ -21,7 +21,7 @@ class Destination < ActiveRecord::Base
   belongs_to :user
 
   def long_address
-    address = address1 + ' ' + address2 + ', ' + city + ', ' + zip
+    address1 + ' ' + address2 + ', ' + city + ', ' + zip
   end
 
   def set_geolocation
