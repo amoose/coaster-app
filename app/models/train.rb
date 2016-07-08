@@ -18,9 +18,12 @@ require 'date'
 #
 
 class Train < ActiveRecord::Base
-  # attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value
   belongs_to :station
   serialize :recurring_value, Hash
+
+  def self.active
+    Train.where(:completed => false)
+  end
 
   def next_departure(date=Date.today)
     # if self.departs? only works if date=Date.today
@@ -30,33 +33,25 @@ class Train < ActiveRecord::Base
   end
 
   def departs?(date=Date.today)
-  	self.recurring and self.recurring_value.has_key?('days') and self.recurring_value['days'].include? Date::ABBR_DAYNAMES[date.wday].downcase
+  	recurring and recurring_value.has_key?(:days) and recurring_value[:days].include? Date::ABBR_DAYNAMES[date.wday].downcase
   end
 
-  def has_departed?(time=Time.now)
-  	self.departure > time
+  def has_departed?(time=Time.zone.now)
+  	departure > time
   end
 
-  def time_zone(date=Date.today)
-  	time = self.departure_time.in_time_zone('Pacific Time (US & Canada)')
-    Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec)
-  end
-
-  def formatted_time(time=self.time_zone)
-		if time.strftime('%I').to_i < 10
-			"#{time.strftime('%I').to_s[-1..-1]}#{time.strftime(':%M%p')}"
-		else
-			 time.strftime("%I:%M%p")
-		end
+  def formatted_time
+    departure_time.strftime('%r')
 	end
 
 	def departure(date=Date.today)
-		self.time_zone if self.departs?(date)
+		time_today if departs?(date)
 	end
 
-  def self.active
-  	Train.where(:completed => false)
-	end
+  private
 
-
+  def time_today(date=Date.today)
+    time = departure_time.in_time_zone('Pacific Time (US & Canada)')
+    Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec)
+  end
 end

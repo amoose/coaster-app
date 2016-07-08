@@ -4,7 +4,7 @@ require 'rails_helper'
 describe Train, type: :model do
   before do
     @train = FactoryGirl.create(:train)
-    @train2 = FactoryGirl.create(:train, recurring_value: {"days" =>['mon']})
+    @train2 = FactoryGirl.create(:train, recurring_value: { days: ['mon']})
     @date = "Sun, 12 Jun 2016".to_date
 
   end

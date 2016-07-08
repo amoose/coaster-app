@@ -1,96 +1,74 @@
+require File.expand_path('../../../lib/seed_helper.rb', __FILE__)
+require 'csv'
+require 'open-uri'
+require 'colorize'
+
 namespace :seed do
   desc "setup, create, migrate then seed the database"
   task :data => :environment do
-    # seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
-    begin
-      # seed = YAML.load(File.read(File.join(Rails.root, 'config', 'trains.yml')))
-      seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains.yml'))).result).symbolize_keys
-    rescue
-      puts 'AN ERROR OCCURRED READING trains.yml'
+    remote_uri = 'http://www.gonctd.com/google_transit.zip'
+    filename = 'data.zip'
+
+    unless File.file?(filename) && file = File.open("lib/data/#{filename}")
+      tempfile = Tempfile.new(filename).tap do |file|
+        friendly_put('Downloading ' + remote_uri + ' to ' + file.path, :warn)
+        file.binmode
+        file.write(open(remote_uri).read)
+        file.close
+      end
+      file = File.open(tempfile)
     end
+    friendly_put "Importing #{file.path}"
+    source = GTFS::Source.build(file, {strict: false})
 
-    seed[:zones].each do |zone|
-        Zone.create(:name => zone.second['name'])
-        puts "created: #{zone.second['name']}"
-    end
+    # fetch coaster and sprinter routes
+    # valid_routes = source.routes.find_all {|r| r.type == '2' || r.type == '0' }
+    # just coaster routes
+    valid_routes = source.routes.find_all {|r| r.type == '2' }
 
-    seed[:stations].each do |station|
+    friendly_put 'Parsing all stops... (this may take a while)', :warn
+    trips = source.trips.find_all {|t| valid_routes.collect(&:id).include?(t.route_id) }
 
-        Station.create(
-                :name => station.first,
-                :address => station.last['address'],
-                :city => station.last['city'],
-                :state => station.last['state'],
-                :zip => station.last['zip'].to_s,
-                :zone => Zone.find(station.last['zone'])
-            )
-        puts "created: #{station.first}"
+    trips.each do |trip|
+      # check trips whose calendar dates are valid
+      calendar = source.calendars.find {|c| c.service_id == trip.service_id }
+      # skip unless the calendar is current
+      next unless is_current?(calendar.start_date, calendar.end_date)
 
-            station.last['trains'].each do |train|
-                # binding.pry
-                Train.create(
-                    :name => train.first,
-                    :departure_time => Time.parse(train.last['departure_time']),
-                    :direction => train.last['direction'],
-                    :station => Station.find_by_name(station.first),
-                    :recurring => train.last['recurring'],
-                    :completed => train.last['completed'],
-                    :recurring_value => train.last['recurring_value']
-                )
-                puts "created: #{train.first}"
+      # fetch stop times for this current trip
+      stop_times = source.stop_times.find_all {|st| st.trip_id == trip.id }
+
+      stop_times.each do |st|
+        stop_station = source.stops.find {|s| s.id == st.stop_id }
+
+        station_record = Station.find_or_create_by(name: stop_station.name) do |new_station|
+          new_station.geolocation = Geolocation.create(latitude: stop_station.lat, longitude: stop_station.lon)
+          friendly_put "Created #{stop_station.name} Station"
         end
-    end
 
-    User.create(:name => 'amos', :email => 'a+admin@tynsax.com', :password => 'foobar', :password_confirmation => 'foobar', :admin => true, :ip_address => '127.0.0.1')
-    User.create(:name => 'moose', :email => 'a+moose@tynsax.com', :password => 'foobar', :password_confirmation => 'foobar', :admin => false, :ip_address => '127.0.0.1')
-  end
-
-
-  desc "tasks for heroku"
-  task :heroku_seed => :environment do
-    Rake::Task['db:setup'].invoke
-    Rake::Task['db:create'].invoke
-    Rake::Task['db:migrate'].invoke
-
-    seed = YAML.load(ERB.new(File.read(File.join(Rails.root, 'config', 'trains2.yml'))).result).symbolize_keys
-
-    seed[:zones].each do |zone|
-        Zone.create(:name => zone.second['name'])
-    end
-
-    seed[:stations].each do |station|
-
-        Station.create(
-                :name => station.first,
-                :address => station.last['address'],
-                :city => station.last['city'],
-                :state => station.last['state'],
-                :zip => station.last['zip'].to_s,
-                :zone => Zone.find(station.last['zone'])
-            )
-
-            station.last['trains'].each do |train|
-                # binding.pry
-                Train.create(
-                    :name => train.first,
-                    :departure_time => Time.parse(train.last['departure_time']),
-                    :direction => train.last['direction'],
-                    :station => Station.find_by_name(station.first),
-                    :recurring => train.last['recurring'],
-                    :completed => train.last['completed'],
-                    :recurring_value => eval(train.last['recurring_value'])
-                )
+        begin
+          train = Train.find_or_create_by(
+                name: trip.id,
+                direction: get_direction(trip),
+                station_id: station_record.id,
+                completed: false
+              ) do |t|
+            t.recurring = true
+            t.recurring_value = get_recurring_value(calendar)
+            t.departure_time = Time.parse(st.departure_time + ' UTC').strftime("%I:%M%p")
+          end
+          friendly_put "Created train: #{train.name}"
+        rescue StandardError => e
+          friendly_put "ERROR! #{e.message}", :error
+          friendly_put st.inspect, :error
         end
+      end
     end
-
-    User.create(:name => 'amos', :email => 'a+admin@tynsax.com', :password => 'foobar', :password_confirmation => 'foobar', :admin => true)
-    User.create(:name => 'moose', :email => 'a+moose@tynsax.com', :password => 'foobar', :password_confirmation => 'foobar', :admin => false)
-  end
-
-  desc "rebuilds database"
-  task :rebuild => :environment do
-    Rake::Task['db:setup'].invoke
-    Rake::Task['db:create'].invoke
-    Rake::Task['db:migrate'].invoke
   end
 end
+
+
+
+
+
+

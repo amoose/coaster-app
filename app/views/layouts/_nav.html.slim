@@ -10,15 +10,13 @@ header
         = link_to 'dalbana', root_path, :class => 'navbar-brand'
       #navbar.navbar-collapse.collapse
         ul.nav.navbar-nav
-          li
-            = nav_link "Home", root_path, {}, {:wrapper => 'li', :selected_class => 'active'}
-
-          - if signed_in?
-            li
-              = nav_link "Stations", stations_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+          = nav_link "Home", root_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+          = nav_link 'Stations', stations_path, {}, {:wrapper => 'li', :selected_class => 'active'}
+        - if signed_in?
+          ul.nav.navbar-nav.navbar-right
             li
               = link_to "Sign Out", signout_path, method: 'delete'
-          - else
-            = nav_link 'Sign Up', signup_path, {}, {:wrapper => 'li', :selected_class => 'active'}
-        - if signed_in? == false
-          = render :partial => 'sign_in'
+        / - unless signed_in?
+        /   = render :partial => 'shared/sign_in'
+        /   ul.nav.navbar-nav.navbar-right
+        /     = nav_link 'Sign Up', signup_path, {}, {:wrapper => 'li', :selected_class => 'active'}

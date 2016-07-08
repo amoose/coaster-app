@@ -14,6 +14,8 @@ gem 'geocoder'
 gem 'slim'
 gem 'gmaps4rails'
 gem 'coffee-rails'
+gem 'gtfs'
+gem 'colorize'
 
 group :development do
   gem 'annotate'

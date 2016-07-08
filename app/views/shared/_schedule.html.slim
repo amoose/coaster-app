@@ -11,14 +11,6 @@ table class="table table-hover"
 			td
 				= train.name
 			td
-				- begin
-					- if train.has_departed?
-						span class="future"
-							= train.formatted_time
-					- else
-						span class="past"
-							= train.formatted_time
-
-				- rescue => error
+				= train.formatted_time
 			td
 				= train.direction
