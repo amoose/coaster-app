@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: stations
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  city       :string
+#  state      :string
+#  zip        :string
+#  created_at :datetime
+#  updated_at :datetime
+#  address    :string
+#  zone_id    :integer
+#
+
 require 'spec_helper'
 require 'rails_helper'
 

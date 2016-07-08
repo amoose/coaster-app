@@ -3,15 +3,15 @@
 # Table name: trains
 #
 #  id              :integer          not null, primary key
-#  name            :string(255)
+#  name            :string
 #  departure_time  :time
-#  direction       :string(255)
+#  direction       :string
 #  wifi            :boolean
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  created_at      :datetime
+#  updated_at      :datetime
 #  station_id      :integer
-#  recurring       :boolean          default(FALSE)
-#  completed       :boolean          default(FALSE)
+#  recurring       :boolean          default("false")
+#  completed       :boolean          default("false")
 #  recurring_value :text
 #  next_date       :datetime
 #

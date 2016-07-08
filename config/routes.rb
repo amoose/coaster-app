@@ -1,3 +1,44 @@
+# == Route Map
+#
+#           Prefix Verb   URI Pattern                             Controller#Action
+#            users GET    /users(.:format)                        users#index
+#                  POST   /users(.:format)                        users#create
+#         new_user GET    /users/new(.:format)                    users#new
+#        edit_user GET    /users/:id/edit(.:format)               users#edit
+#             user GET    /users/:id(.:format)                    users#show
+#                  PATCH  /users/:id(.:format)                    users#update
+#                  PUT    /users/:id(.:format)                    users#update
+#                  DELETE /users/:id(.:format)                    users#destroy
+#                  PATCH  /users/:id/update_geolocation(.:format) users#update_geolocation
+#         sessions POST   /sessions(.:format)                     sessions#create
+#      new_session GET    /sessions/new(.:format)                 sessions#new
+#          session DELETE /sessions/:id(.:format)                 sessions#destroy
+#     destinations GET    /destinations(.:format)                 destinations#index
+#                  POST   /destinations(.:format)                 destinations#create
+#  new_destination GET    /destinations/new(.:format)             destinations#new
+# edit_destination GET    /destinations/:id/edit(.:format)        destinations#edit
+#      destination GET    /destinations/:id(.:format)             destinations#show
+#                  PATCH  /destinations/:id(.:format)             destinations#update
+#                  PUT    /destinations/:id(.:format)             destinations#update
+#                  DELETE /destinations/:id(.:format)             destinations#destroy
+#         stations GET    /stations(.:format)                     stations#index
+#                  POST   /stations(.:format)                     stations#create
+#      new_station GET    /stations/new(.:format)                 stations#new
+#     edit_station GET    /stations/:id/edit(.:format)            stations#edit
+#          station GET    /stations/:id(.:format)                 stations#show
+#                  PATCH  /stations/:id(.:format)                 stations#update
+#                  PUT    /stations/:id(.:format)                 stations#update
+#                  DELETE /stations/:id(.:format)                 stations#destroy
+#             root GET    /                                       static_pages#home
+#             help GET    /help(.:format)                         static_pages#help
+#            about GET    /about(.:format)                        static_pages#about
+#          contact GET    /contact(.:format)                      static_pages#contact
+#          locator GET    /locator(.:format)                      users#locator
+#           signup GET    /signup(.:format)                       users#new
+#           signin GET    /signin(.:format)                       sessions#new
+#          signout GET    /signout(.:format)                      sessions#destroy
+#
+
 Coaster::Application.routes.draw do
 
   # The priority is based upon order of creation:
