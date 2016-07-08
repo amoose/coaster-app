@@ -20,12 +20,22 @@ describe StationsController, :type => :controller do
 
       expect(assigns(:json)).to include(@test_station_pos.to_json)
     end
+
+    it 'renders stations/index' do
+      get :index
+      expect(response).to render_template('stations/index')
+    end
   end
 
   describe 'GET /show' do
     it 'assigns requested station correctly' do
       get :show, {id: @test_station.id}
       expect(assigns(:station)).to eq(@test_station)
+    end
+
+    it 'renders /show' do
+      get :show, {id: @test_station.id}
+      expect(response).to render_template("stations/show")
     end
 
     context 'if date given' do

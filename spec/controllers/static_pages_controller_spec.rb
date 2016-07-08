@@ -14,7 +14,7 @@ describe StaticPagesController, type: :controller do
       new_session
 
       get :home
-      expect(response).to be_ok
+      expect(response).to render_template('static_pages/home')
     end
 
     it 'finds nearby stations' do

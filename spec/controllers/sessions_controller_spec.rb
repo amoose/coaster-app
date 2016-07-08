@@ -14,6 +14,11 @@ describe SessionsController, :type => :controller do
 
         expect(assigns(:current_user)).to eq(@user)
       end
+
+      it 'renders user page' do
+        post :create, session_valid_params
+        expect(response).to redirect_to("#{root_url}users/#{@user.id}")
+      end
     end
 
     context 'with invalid email/password' do
@@ -21,6 +26,11 @@ describe SessionsController, :type => :controller do
         post :create, session_invalid_params
 
         expect(assigns(:current_user)).to eq(nil)
+      end
+
+      it 'renders #new page' do
+        post :create, session_invalid_params
+        expect(response).to render_template("sessions/new")
       end
     end
   end
@@ -32,6 +42,14 @@ describe SessionsController, :type => :controller do
 
       delete :destroy
       expect(assigns(:current_user)).to eq(nil)
+    end
+
+    it 'redirects to home' do
+      post :create, session_valid_params
+      expect(assigns(:current_user)).to eq(@user)
+
+      delete :destroy
+      expect(response).to redirect_to(root_url)
     end
   end
 end

@@ -36,8 +36,4 @@ describe Train, type: :model do
     expect(@train.departs?(@date)).to be_truthy
     expect(@train2.departs?(@date)).to be_falsey
   end
-
-  it 'returns departure time in Pacific Time' do
-    skip
-  end
 end
