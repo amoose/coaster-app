@@ -1,10 +1,10 @@
-def friendly_put(msg, status=:success)
+def friendly_put(msg, status = :success)
   puts '✓ '.green + msg and return if status == :success
   puts 'x '.red + msg and return if status == :error
   puts 'i '.yellow + msg and return if status == :warn
 end
 
-def is_current?(start_str, end_str)
+def current?(start_str, end_str)
   start_date = Date.parse(start_str)
   end_date = Date.parse(end_str)
 

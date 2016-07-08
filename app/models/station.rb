@@ -16,10 +16,10 @@
 class Station < ActiveRecord::Base
   # attr_accessible :address, :city, :name, :state, :zip, :zone
   belongs_to :zone
-  has_one :geolocation, :as => :geocodeable, dependent: :destroy
+  has_one :geolocation, as: :geocodeable, dependent: :destroy
   has_many :trains
   before_save :set_geolocation
-  reverse_geocoded_by :get_lat, :get_lon
+  reverse_geocoded_by :lat, :lon
   after_validation :reverse_geocode
 
   def full_address
@@ -30,15 +30,7 @@ class Station < ActiveRecord::Base
     self.geolocation ||= Geolocation.new(address: full_address)
   end
 
-<<<<<<< 383da8294493be95152025f16bf836541406797b
-  def departing(date=Date.today)
-=======
-  # def self.near
-
-  # end
-
   def departing(date = Date.today)
->>>>>>> Rubocop first run
     # self.trains.each do |train|
     #   [] << train if train.departs?(date)
     # end
@@ -47,11 +39,11 @@ class Station < ActiveRecord::Base
 
   private
 
-  def get_lat
+  def lat
     geolocation.latitude if geolocation
   end
 
-  def get_lon
+  def lon
     geolocation.longitude if geolocation
   end
 end

@@ -52,6 +52,12 @@ Metrics/AbcSize:
   Enabled: false # disabled temporarily
   Max: 15
 
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 Rails/TimeZone:
   Enabled: false
 
