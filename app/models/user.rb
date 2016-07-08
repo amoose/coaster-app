@@ -29,9 +29,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, :if => :should_validate_password?
   validates :password_confirmation, presence: true,  :if => :should_validate_password?
 
-  has_one :geolocation, :as => :geocodeable
+  has_one :geolocation, :as => :geocodeable, dependent: :destroy
 
-  has_many :destinations
+  has_many :destinations, dependent: :destroy
 
   private
     def create_remember_token

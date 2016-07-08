@@ -16,7 +16,7 @@
 class Station < ActiveRecord::Base
   # attr_accessible :address, :city, :name, :state, :zip, :zone
   belongs_to :zone
-  has_one :geolocation, :as => :geocodeable
+  has_one :geolocation, :as => :geocodeable, dependent: :destroy
   has_many :trains
   before_save :set_geolocation
   reverse_geocoded_by :get_lat, :get_lon
