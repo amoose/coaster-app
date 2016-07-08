@@ -3,16 +3,16 @@
 # Table name: destinations
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  address1   :string(255)
-#  address2   :string(255)
-#  city       :string(255)
-#  state      :string(255)
-#  zip        :string(255)
+#  name       :string
+#  address1   :string
+#  address2   :string
+#  city       :string
+#  state      :string
+#  zip        :string
 #  user_id    :integer
-#  photo      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  photo      :string
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 require 'test_helper'

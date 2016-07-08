@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: geolocations
+#
+#  id               :integer          not null, primary key
+#  latitude         :float
+#  longitude        :float
+#  address          :string
+#  geocodeable_id   :integer
+#  geocodeable_type :string
+#  created_at       :datetime
+#  updated_at       :datetime
+#  accuracy         :integer
+#  gmaps            :boolean
+#
+
 require 'spec_helper'
 require 'rails_helper'
 

@@ -1,21 +1,20 @@
 require 'spec_helper'
 require 'rails_helper'
-
 # == Schema Information
 #
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  name            :string(255)
-#  email           :string(255)
-#  remember_token  :string(255)
-#  password_digest :string(255)
+#  name            :string
+#  email           :string
+#  remember_token  :string
+#  password_digest :string
 #  profile         :text
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  admin           :boolean          default(FALSE)
-#  ip_address      :string(255)
-#  tracking        :boolean          default(FALSE)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  admin           :boolean          default("false")
+#  ip_address      :string
+#  tracking        :boolean          default("false")
 #
 
 describe User, type: :model do
