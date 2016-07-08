@@ -18,7 +18,6 @@ require 'date'
 #
 
 class Train < ActiveRecord::Base
-  # attr_accessible :departure_time, :direction, :name, :wifi, :station, :recurring, :completed, :recurring_value
   belongs_to :station
   serialize :recurring_value, Hash
 
@@ -34,8 +33,7 @@ class Train < ActiveRecord::Base
   end
 
   def departs?(date=Date.today)
-  	recurring and recurring_value.has_key?(:days) and
-    recurring_value[:days].include? Date::ABBR_DAYNAMES[date.wday].downcase
+  	recurring and recurring_value.has_key?(:days) and recurring_value[:days].include? Date::ABBR_DAYNAMES[date.wday].downcase
   end
 
   def has_departed?(time=Time.zone.now)
@@ -44,11 +42,6 @@ class Train < ActiveRecord::Base
 
   def formatted_time
     departure_time.strftime('%r')
-		# if time_today.strftime('%I').to_i < 10
-		# 	"#{time_today.strftime('%I').to_s[-1..-1]}#{time_today.strftime(':%M%p')}"
-		# else
-		# 	 time_today.strftime("%I:%M%p")
-		# end
 	end
 
 	def departure(date=Date.today)
@@ -61,5 +54,4 @@ class Train < ActiveRecord::Base
     time = departure_time.in_time_zone('Pacific Time (US & Canada)')
     Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec)
   end
-
 end
