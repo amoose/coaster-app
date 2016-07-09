@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rails_helper'
 
-#geo = Geolocation.near(@user.geolocation).where(:geocodeable_type => 'Station')
+# geo = Geolocation.near(@user.geolocation).where(:geocodeable_type => 'Station')
 
 describe StaticPagesController, type: :controller do
   before do
@@ -19,21 +19,21 @@ describe StaticPagesController, type: :controller do
 
     it 'finds nearby stations' do
       new_session
-      set_user_location(@user)
+      user_location(@user)
 
       get :home
 
-      expect(assigns(:stations)[0]).to have_attributes( name: "Santa Fe Depot (San Diego)",
-                                                        address: "1050 Kettner Blvd.",
-                                                        city: "San Diego",
-                                                        state: "CA",
-                                                        zip: "92101",
-                                                        zone_id: 3 )
+      expect(assigns(:stations)[0]).to have_attributes(name: 'Santa Fe Depot (San Diego)',
+                                                       address: '1050 Kettner Blvd.',
+                                                       city: 'San Diego',
+                                                       state: 'CA',
+                                                       zip: '92101',
+                                                       zone_id: 3)
     end
 
     it 'finds trains for nearby stations', focus: :true do
       new_session
-      set_user_location(@user)
+      user_location(@user)
 
       get :home
 

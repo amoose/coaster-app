@@ -1,0 +1,125 @@
+AllCops:
+  Exclude:
+    #exclude files that will likely not be used in the future
+    - 'lib/tasks/seed.rake'
+    - 'lib/tasks/db.rake'
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'config/initializers/simple_form*'
+    - 'db/migrate/*'
+    - 'vendor/**/*'
+
+Lint/ParenthesesAsGroupedExpression:
+  Description: Checks for method calls with a space before the opening parenthesis.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#parens-no-spaces
+  Enabled: true
+
+Metrics/ClassLength:
+  Description: Avoid classes longer than 150 lines of code.
+  Enabled: false # disabled temporarily
+  CountComments: false
+  Max: 150
+
+Metrics/LineLength:
+  Description: Limit lines to 120 characters.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#80-character-limits
+  Enabled: true
+  Max: 120
+  AllowURI: true
+  URISchemes:
+  - http
+  - https
+
+Metrics/ParameterLists:
+  Enabled: false
+  Max: 5
+  CountKeywordArgs: true
+
+Metrics/MethodLength:
+  Description: Avoid methods longer than 20 lines of code.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#short-methods
+  Enabled: false
+  CountComments: false
+  Max: 40
+
+Metrics/ModuleLength:
+  Description: Avoid modules longer than 100 lines of code.
+  Enabled: true
+  CountComments: false
+  Max: 100
+
+Metrics/AbcSize:
+  Enabled: false # disabled temporarily
+  Max: 15
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails/TimeZone:
+  Enabled: false
+
+Rails/Date:
+  Enabled: false
+
+Style/AndOr:
+  Description: Use &&/|| instead of and/or.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-and-or-or
+  Enabled: true
+  EnforcedStyle: conditionals
+  SupportedStyles:
+  - always
+  - conditionals
+
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+
+Style/DotPosition:
+  Description: Checks the position of the dot in multi-line method calls.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains
+  Enabled: true
+  EnforcedStyle: trailing
+  SupportedStyles:
+  - leading
+  - trailing
+
+Style/ExtraSpacing:
+  Description: Do not use unnecessary spacing.
+  Enabled: false
+
+Style/TrailingWhitespace:
+  Description: 'Avoid trailing whitespace.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-whitespace'
+  Enabled: false
+
+Style/GuardClause:
+  Description: Check for conditionals that can be replaced with guard clauses
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals
+  Enabled: false
+  MinBodyLength: 4
+
+Style/StringLiterals:
+  Description: Checks if uses of quotes match the configured preference.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
+  Enabled: true
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+  - single_quotes
+  - double_quotes
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  SupportedStyles:
+    - slashes
+    - percent_r
+    - mixed
+  AllowInnerSlashes: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false

@@ -22,35 +22,37 @@ class Train < ActiveRecord::Base
   serialize :recurring_value, Hash
 
   def self.active
-    Train.where(:completed => false)
+    Train.where(completed: false)
   end
 
-  def next_departure(date=Date.today)
+  def next_departure(date = Date.today)
     # if self.departs? only works if date=Date.today
-    if self.departs?(date)
-			self.departure
+    departure if departs?(date)
+  end
+
+  def departs?(date = Date.today)
+    if recurring &&
+       recurring_value.key?(:days) &&
+       recurring_value[:days].include?(Date::ABBR_DAYNAMES[date.wday].downcase)
+      return true
     end
   end
 
-  def departs?(date=Date.today)
-  	recurring and recurring_value.has_key?(:days) and recurring_value[:days].include? Date::ABBR_DAYNAMES[date.wday].downcase
-  end
-
-  def has_departed?(time=Time.zone.now)
-  	departure > time
+  def departed?(time = Time.zone.now)
+    departure > time
   end
 
   def formatted_time
     departure_time.strftime('%r')
-	end
+  end
 
-	def departure(date=Date.today)
-		time_today if departs?(date)
-	end
+  def departure(date = Date.today)
+    time_today if departs?(date)
+  end
 
   private
 
-  def time_today(date=Date.today)
+  def time_today(date = Date.today)
     time = departure_time.in_time_zone('Pacific Time (US & Canada)')
     Time.mktime(date.year, date.month, date.day, time.hour, time.min, time.sec)
   end

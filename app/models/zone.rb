@@ -13,6 +13,6 @@ class Zone < ActiveRecord::Base
   has_many :stations
 
   def self.second
-  	Zone.find(2)
+    Zone.find(2)
   end
 end

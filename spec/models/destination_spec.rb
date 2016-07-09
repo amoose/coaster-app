@@ -24,7 +24,7 @@ describe Destination, type: :model do
   end
 
   it 'returns appropriate long address' do
-    expect(@destination.long_address).to eq("123 aplace ave , A City, 12345")
+    expect(@destination.long_address).to eq('123 aplace ave , A City, 12345')
   end
 
   it 'has a geolocation' do

@@ -1,0 +1,9 @@
+= form_for(:session, url: sessions_path, html: {class: 'navbar-form navbar-right'} ) do |f|
+  .form-group
+    = f.text_field :email, class: "form-control", style: 'margin-right: 5px;'
+  .form-group
+    = f.password_field :password, class: "form-control", style: 'margin-right: 5px;'
+
+    = f.submit "Sign in", class: "btn btn-primary"
+
+end

@@ -33,7 +33,7 @@ namespace :seed do
       # check trips whose calendar dates are valid
       calendar = source.calendars.find {|c| c.service_id == trip.service_id }
       # skip unless the calendar is current
-      next unless is_current?(calendar.start_date, calendar.end_date)
+      next unless current?(calendar.start_date, calendar.end_date)
 
       # fetch stop times for this current trip
       stop_times = source.stop_times.find_all {|st| st.trip_id == trip.id }
@@ -66,9 +66,3 @@ namespace :seed do
     end
   end
 end
-
-
-
-
-
-

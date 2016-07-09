@@ -22,7 +22,7 @@ describe Station, type: :model do
   end
 
   it 'has a full address' do
-    expect(@station.full_address).to eq("1050 Kettner Blvd., San Diego, 92101")
+    expect(@station.full_address).to eq('1050 Kettner Blvd., San Diego, 92101')
   end
 
   it 'sets a geolocation' do
@@ -31,8 +31,8 @@ describe Station, type: :model do
 
   it 'only lists trains departing on given date', focus: true do
     @train = FactoryGirl.create(:train)
-    @train2 = FactoryGirl.create(:train, recurring_value: {"days" => ["mon"]})
-    date = "Sun, 12 Jun 2016".to_date
+    @train2 = FactoryGirl.create(:train, recurring_value: { 'days' => ['mon'] })
+    date = 'Sun, 12 Jun 2016'.to_date
 
     expect(@station.departing(date)).to include(@train)
     expect(@station.departing(date)).not_to include(@train2)

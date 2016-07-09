@@ -20,3 +20,6 @@ notifications:
   email: false
 before_script:
   - bundle exec rake db:migrate
+script:
+  - bundle exec rubocop
+  - bundle exec rake

@@ -23,17 +23,17 @@ describe User, type: :model do
       @user = FactoryGirl.create :user
     end
 
-    it "has expected attributes" do
-      expect(@user).to have_attributes(name: "Lazslo",
-                                       email: "lazslo@dmail.com",
-                                       password: "imadog",
-                                       password_confirmation: "imadog",
+    it 'has expected attributes' do
+      expect(@user).to have_attributes(name: 'Lazslo',
+                                       email: 'lazslo@dmail.com',
+                                       password: 'imadog',
+                                       password_confirmation: 'imadog',
                                        password_digest: /\A\S{60}\z/,
                                        remember_token: /\A\S{22}\z/)
-      expect(User.find_by(name: "Lazslo"))
+      expect(User.find_by(name: 'Lazslo'))
     end
 
-    it "sets a geolocation" do
+    it 'sets a geolocation' do
       expect(@user.geolocation).not_to eq(nil)
     end
 
@@ -44,15 +44,15 @@ describe User, type: :model do
 
   context 'with password less than 6 characters' do
     it 'does not create a user' do
-      expect(FactoryGirl.build(:user, password: "foob",
-                               password_confirmation: "foob")).not_to be_valid
+      expect(FactoryGirl.build(:user, password: 'foob',
+                                      password_confirmation: 'foob')).not_to be_valid
     end
   end
 
   context 'with differing password confirmation' do
     it 'does not create a user' do
-      expect(FactoryGirl.build(:user, password: "foobar",
-                               password_confirmation: "raboof")).not_to be_valid
+      expect(FactoryGirl.build(:user, password: 'foobar',
+                                      password_confirmation: 'raboof')).not_to be_valid
     end
   end
 

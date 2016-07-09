@@ -2,10 +2,10 @@ require 'date'
 
 class Date
   def dayname
-     DAYNAMES[self.wday]
+    DAYNAMES[wday]
   end
 
   def abbr_dayname
-    ABBR_DAYNAMES[self.wday]
+    ABBR_DAYNAMES[wday]
   end
 end
