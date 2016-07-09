@@ -19,7 +19,6 @@ gem 'colorize'
 
 group :development do
   gem 'annotate'
-  gem 'rubocop', require: false
 end
 
 group :test do
@@ -38,5 +37,6 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'rubocop', require: false
 gem 'rails_12factor', group: :production
 gem 'pg'
