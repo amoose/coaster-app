@@ -3,6 +3,17 @@
   	| &nbsp;
 
 javascript:
+  function getGeolocation() {
+    navigator.geolocation.getCurrentPosition(setGeoCookie);
+  };
+
+  function setGeoCookie(position) {
+    var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    document.cookie = "lat_lng=" + escape(cookie_val);
+  };
+
+  getGeolocation();
+
   $( document ).ready(function() {
     handler = Gmaps.build('Google');
     handler.buildMap( { provider: { zoom: 4}, internal: { id: 'gmaps' }}, function(){
@@ -13,6 +24,7 @@ javascript:
             handler.bounds.extendWith(markers);
             handler.map.centerOn(#{user});
             handler.getMap().setZoom(12);
-    })
+    });
   });
+
 

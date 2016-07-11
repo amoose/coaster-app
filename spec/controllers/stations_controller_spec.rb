@@ -8,34 +8,43 @@ describe StationsController, type: :controller do
   end
 
   describe 'GET home' do
-    it 'gets nearest' do
-      new_session
+    context 'when logged in' do
+      before do
+        new_session
+      end
 
-      get :nearest
-      expect(response).to be_ok
+      it 'gets nearest' do
+        get :nearest
+        expect(response).to be_ok
+      end
+
+      it 'finds nearby stations' do
+        user_location(@user)
+
+        get :nearest
+
+        expect(assigns(:stations)[0]).to have_attributes(name: 'Santa Fe Depot (San Diego)',
+                                                         address: '1050 Kettner Blvd.',
+                                                         city: 'San Diego',
+                                                         state: 'CA',
+                                                         zip: '92101',
+                                                         zone_id: 3)
+      end
+
+      it 'finds trains for nearby stations', focus: :true do
+        user_location(@user)
+
+        get :nearest
+
+        expect(assigns(:trains)).to eq(@station.trains)
+      end
     end
 
-    it 'finds nearby stations' do
-      new_session
-      user_location(@user)
-
-      get :nearest
-
-      expect(assigns(:stations)[0]).to have_attributes(name: 'Santa Fe Depot (San Diego)',
-                                                       address: '1050 Kettner Blvd.',
-                                                       city: 'San Diego',
-                                                       state: 'CA',
-                                                       zip: '92101',
-                                                       zone_id: 3)
-    end
-
-    it 'finds trains for nearby stations', focus: :true do
-      new_session
-      user_location(@user)
-
-      get :nearest
-
-      expect(assigns(:trains)).to eq(@station.trains)
+    context 'when not logged in', focus: :true do
+      it 'creates a guest user' do
+        get :nearest
+        expect(assigns(:user)).to be_a(GuestUser)
+      end
     end
   end
 
