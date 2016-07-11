@@ -3,41 +3,74 @@ require 'rails_helper'
 
 describe StationsController, type: :controller do
   before do
-    @test_station = FactoryGirl.create :station
+    @user = FactoryGirl.create :user
+    @station = FactoryGirl.create :station
+  end
+
+  describe 'GET home' do
+    it 'gets nearest' do
+      new_session
+
+      get :nearest
+      expect(response).to be_ok
+    end
+
+    it 'finds nearby stations' do
+      new_session
+      user_location(@user)
+
+      get :nearest
+
+      expect(assigns(:stations)[0]).to have_attributes(name: 'Santa Fe Depot (San Diego)',
+                                                       address: '1050 Kettner Blvd.',
+                                                       city: 'San Diego',
+                                                       state: 'CA',
+                                                       zip: '92101',
+                                                       zone_id: 3)
+    end
+
+    it 'finds trains for nearby stations', focus: :true do
+      new_session
+      user_location(@user)
+
+      get :nearest
+
+      expect(assigns(:trains)).to eq(@station.trains)
+    end
   end
 
   describe 'GET /index' do
     it 'lists all stations' do
       get :index
-      expect(assigns(:stations)).to include(@test_station)
+      expect(assigns(:stations)).to include(@station)
     end
 
     it 'loads station geolocations as json', focus: true do
       get :index
-      @test_station_pos = { lat: @test_station.geolocation.latitude,
-                            lng: @test_station.geolocation.longitude,
-                            infowindow: @test_station.name }
+      @station_pos = { lat: @station.geolocation.latitude,
+                       lng: @station.geolocation.longitude,
+                       infowindow: @station.name }
 
-      expect(assigns(:json)).to include(@test_station_pos.to_json)
+      expect(assigns(:json)).to include(@station_pos.to_json)
     end
   end
 
   describe 'GET /show' do
     it 'assigns requested station correctly' do
-      get :show, id: @test_station.id
-      expect(assigns(:station)).to eq(@test_station)
+      get :show, id: @station.id
+      expect(assigns(:station)).to eq(@station)
     end
 
     context 'if date given' do
       it 'assigns the given date' do
-        get :show, id: @test_station.id, date: 'Fri, 10 Jun 2016'
+        get :show, id: @station.id, date: 'Fri, 10 Jun 2016'
         expect(assigns(:date)).to eq('Fri, 10 Jun 2016'.to_date)
       end
     end
 
     context 'if date not given' do
       it 'assigns the date to today' do
-        get :show, id: @test_station.id
+        get :show, id: @station.id
         expect(assigns(:date)).to eq(Date.today)
       end
     end
@@ -45,8 +78,8 @@ describe StationsController, type: :controller do
     it "loads the station's trains departing on date" do
       @train = FactoryGirl.create :train
 
-      get :show, id: @test_station.id
-      expect(assigns(:trains)).to include(@test_station.trains.first)
+      get :show, id: @station.id
+      expect(assigns(:trains)).to include(@station.trains.first)
     end
   end
 end

@@ -29,7 +29,7 @@
 #                  PATCH  /stations/:id(.:format)                 stations#update
 #                  PUT    /stations/:id(.:format)                 stations#update
 #                  DELETE /stations/:id(.:format)                 stations#destroy
-#             root GET    /                                       static_pages#home
+#             root GET    /                                       stations#home
 #             help GET    /help(.:format)                         static_pages#help
 #            about GET    /about(.:format)                        static_pages#about
 #          contact GET    /contact(.:format)                      static_pages#contact
@@ -49,7 +49,7 @@ Coaster::Application.routes.draw do
   resources :destinations
   resources :stations
 
-  root to: 'static_pages#home'
+  root to: 'stations#nearest'
   get '/help',      to: 'static_pages#help'
   get '/about',     to: 'static_pages#about'
   get '/contact',   to: 'static_pages#contact'
