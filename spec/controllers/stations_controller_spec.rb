@@ -8,42 +8,54 @@ describe StationsController, type: :controller do
   end
 
   describe 'GET home' do
-    context 'when logged in' do
-      before do
-        new_session
-      end
-
-      it 'gets nearest' do
-        get :nearest
-        expect(response).to be_ok
-      end
-
-      it 'finds nearby stations' do
-        user_location(@user)
-
-        get :nearest
-
-        expect(assigns(:stations)[0]).to have_attributes(name: 'Santa Fe Depot (San Diego)',
-                                                         address: '1050 Kettner Blvd.',
-                                                         city: 'San Diego',
-                                                         state: 'CA',
-                                                         zip: '92101',
-                                                         zone_id: 3)
-      end
-
-      it 'finds trains for nearby stations', focus: :true do
-        user_location(@user)
-
-        get :nearest
-
-        expect(assigns(:trains)).to eq(@station.trains)
-      end
+    before do
+      new_session
     end
 
-    context 'when not logged in', focus: :true do
-      it 'creates a guest user' do
-        get :nearest
-        expect(assigns(:user)).to be_a(GuestUser)
+    it 'gets home' do
+      get :home
+      expect(response).to be_ok
+    end
+  end
+
+  describe 'GET nearest' do
+    it 'gets a position', focus: :true do
+      get :nearest, user_coordinates
+
+      expect(assigns(:position)).to eq([32.715736, -117.161087])
+    end
+
+    it 'finds nearby stations', focus: :true do
+      get :nearest, user_coordinates
+
+      expect(assigns(:stations)[0]).to have_attributes(name: 'Santa Fe Depot (San Diego)',
+                                                       address: '1050 Kettner Blvd.',
+                                                       city: 'San Diego',
+                                                       state: 'CA',
+                                                       zip: '92101',
+                                                       zone_id: 3)
+    end
+
+    it 'finds trains for nearby stations' do
+      get :nearest, user_coordinates
+
+      expect(assigns(:trains)).to eq(@station.trains)
+    end
+
+    context 'when not signed in' do
+      context 'with geolocating permission' do
+        it 'creates a guest user' do
+          get :nearest, user_coordinates
+
+          expect(assigns(:user)).to be_a(GuestUser)
+        end
+
+        it 'creates a guest user geolocation' do
+          get :nearest, user_coordinates
+
+          expect(assigns(:user).geolocation.latitude).to eq(32.715736)
+          expect(assigns(:user).geolocation.longitude).to eq(-117.161087)
+        end
       end
     end
   end
@@ -54,7 +66,7 @@ describe StationsController, type: :controller do
       expect(assigns(:stations)).to include(@station)
     end
 
-    it 'loads station geolocations as json', focus: true do
+    it 'loads station geolocations as json' do
       get :index
       @station_pos = { lat: @station.geolocation.latitude,
                        lng: @station.geolocation.longitude,

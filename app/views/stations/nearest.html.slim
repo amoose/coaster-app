@@ -1,14 +1,45 @@
-- if signed_in?
-	h2
-	 | Welcome back,&nbsp;
-	 = current_user.name
-	hr
+/ - if signed_in?
+/ 	h2
+/ 	 | Welcome back,&nbsp;
+/ 	 = current_user.name
+/ 	hr
+
+/ - else
+/ 	h3
+/ 		| Not logged in.
+/ 		/ = debug @stations
+
+- if @position.nil?
+	|Coaster works best if you allow us to track your location.
 
 - else
-	h3
-		| Not logged in.
-		/ = debug @stations
-= render :partial => 'map', locals: {stations: @station_markers,
-																		 user: @user_marker}
-= render :partial => 'station', :object => @station
-= render :partial => 'schedule', :object => @trains
+	= render :partial => 'map', locals: {stations: @station_markers,
+																			 user: @user_marker}
+	= render :partial => 'station', :object => @station
+	= render :partial => 'schedule', :object => @trains
+
+javascript:
+	var geoEnabled = function() {
+		if (localStorage.getItem('geolocate') == 'true') {
+			getGeolocation();
+		} else {
+			var geoloc = confirm('Allow Geolocation?');
+			localStorage.setItem('geolocate', geoloc)
+				if (geoloc == true) {
+					getGeolocation();
+				};
+			};
+	};
+
+	function getGeolocation() {
+  	navigator.geolocation.getCurrentPosition(setGeoCookie);
+	};
+
+	function setGeoCookie(position) {
+  	var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+  	document.cookie = "lat_lng=" + escape(cookie_val);
+	};
+
+	$(document).ready(function(){
+		geoEnabled();
+	});

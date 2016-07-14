@@ -1,9 +1,22 @@
 class StationsController < ApplicationController
+  def home
+    @station = params[:id]
+    @trains = @station.trains if @station
+  end
+
   def nearest
+    @position = [params[:latitude], params[:longitude]]
     @stations = []
-    if @position
-      @user = current_user || GuestUser.new(@position)
-      create_markers(@user)
+
+    @user = current_user || GuestUser.new(@position)
+    create_markers_near(@user)
+    @nearest_station = @stations[0]
+
+    respond_to do |format|
+      format.json do 
+        render json: { markers: { user: @user_marker, stations: @station_markers },
+                       station: @nearest_station } 
+      end
     end
   end
 
@@ -30,12 +43,17 @@ class StationsController < ApplicationController
     @trains = []
     @station.trains.each { |train| @trains << train if train.departs?(@date) }
     @trains.sort! { |a, b| a.departure_time <=> b.departure_time }
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
 
-  def create_markers(user)
-    geolocs = Geolocation.near(user_location(user)).where(geocodeable_type: 'Station')
+  def create_markers_near(user)
+    geolocs = Geolocation.near(user.geolocation).where(geocodeable_type: 'Station')
     geolocs.each do |loc|
       @stations << Station.find(loc.geocodeable_id)
     end
@@ -70,7 +88,7 @@ class StationsController < ApplicationController
         marker.infowindow User.find(geo.geocodeable_id).name if user.respond_to?(:name)
         marker.picture(url: user_marker_image(user),
                        width: 50,
-                       height: 50) if user.respond_to?(:email)
+                       height: 50)
       end
     end
 
@@ -87,7 +105,7 @@ class StationsController < ApplicationController
   end
 
   def user_marker_image(user)
-    if gravatar?(user)
+    if user.respond_to?(:email) && gravatar?(user)
       gravatar_url(user)
     else
       'http://maps.google.com/mapfiles/ms/icons/green-dot.png'

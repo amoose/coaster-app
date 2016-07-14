@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   before_action :development_ip
-  before_action :position
+  # before_action :position
 
   def correct_user
     @user = User.find(params[:id])
@@ -23,10 +23,6 @@ class ApplicationController < ActionController::Base
   def time_now
     Time.now
     # Time.new(2000,1,1,t.hour,t.min,t.sec)
-  end
-
-  def position
-    @position = cookies[:lat_lng].present? ? cookies[:lat_lng].split('|') : 'None Found'
   end
 
   def development_ip

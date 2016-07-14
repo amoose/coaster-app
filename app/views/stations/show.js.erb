@@ -1,0 +1,15 @@
+function injectStation() {
+  $('.station').html('<%= j render(@station) %>');
+};
+
+function injectSchedule() {
+  $('.schedule').html('<%= j render partial: 'schedule', locals: {trains: @trains} %>');
+};
+
+function logIt() {
+  console.log('rendered show.js');
+};
+
+
+injectStation();
+injectSchedule();
