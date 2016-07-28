@@ -1,0 +1,67 @@
+.map_container#map-wrap
+  div class='gmaps4rails_map' id="gmaps"
+  	| &nbsp;
+
+javascript:
+  function buildMap() {
+    handler = Gmaps.build('Google');
+    handler.buildMap( { provider: { zoom: 10}, internal: { id: 'gmaps' }}, function(){
+      var center = new google.maps.LatLng(32.715736, -117.161087)
+      handler.map.centerOn(center);
+
+    });
+  };
+
+  function geoEnabled() {
+    if (localStorage.getItem('geolocate') == 'true') {
+      getGeolocation();
+    } else {
+      var geoloc = confirm('Allow Geolocation?');
+      localStorage.setItem('geolocate', geoloc)
+        if (geoloc == true) {
+          getGeolocation();
+        };
+      };
+  };
+
+  function getGeolocation() {
+    navigator.geolocation.getCurrentPosition(setGeopos);
+  };
+
+  function setGeopos(position) {
+    $.ajax({
+        url: '/nearest',
+        data: { latitude: position.coords.latitude, longitude: position.coords.longitude },
+        success: function(data) {
+          var markers = data.markers;
+          var user = JSON.parse(markers.user);
+          var stations = JSON.parse(markers.stations);
+          addNearestMarkers(user, stations);
+
+          var station = data.station;
+          renderNearest(station);
+        }
+      });
+  };
+
+  function addNearestMarkers(user, stations) {
+      var markers = handler.addMarkers(stations);
+      var user_marker = handler.addMarkers(user, { optimized: false });
+            handler.bounds.extendWith(markers);
+            handler.map.centerOn(user);
+            handler.getMap().setZoom(12);
+  };
+
+  function renderNearest(station) {
+    $.ajax({
+      url: '/stations/' + station.id + '.js',
+      data: {},
+      dataType: 'script',
+      success: function(data){}
+    });
+  };
+
+  $(document).ready(function(){
+    buildMap();
+    geoEnabled();
+  });

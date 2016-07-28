@@ -1,0 +1,38 @@
+.panel-group#accordion
+	.panel.panel-default
+		.panel-heading
+			h2.panel-title
+				a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+					| Schedule
+			.panel-collapse.collapse.in#collapseOne
+				.panel-body
+					table class="table table-hover"
+						tr
+							th
+								| Number
+							th
+								| Departure Time
+							th
+								| Direction
+						- for train in trains
+							tr
+								td
+									= train.name
+								td
+									- begin
+										- if train.departed?
+											span class="future"
+												= train.formatted_time
+										- else
+											span class="past"
+												= train.formatted_time
+
+
+
+
+									- rescue => error
+
+
+								td
+
+									= train.direction

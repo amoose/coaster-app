@@ -1,0 +1,14 @@
+/ - if signed_in?
+/ 	h2
+/ 	 | Welcome back,&nbsp;
+/ 	 = current_user.name
+/ 	hr
+
+/ - else
+/ 	h3
+/ 		| Not logged in.
+/ 		/ = debug @stations
+
+= render :partial => 'map'
+.station
+.schedule

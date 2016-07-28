@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   before_action :development_ip
+  # before_action :position
 
   def correct_user
     @user = User.find(params[:id])

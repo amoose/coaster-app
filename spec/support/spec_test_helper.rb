@@ -13,7 +13,6 @@ module SpecTestHelper
   end
 
   # Session Controller Helpers
-
   def new_session
     original_controller = @controller
 
@@ -105,5 +104,10 @@ module SpecTestHelper
     geo.longitude = -117.1611
     geo.fetch_address
     geo.save
+  end
+
+  # Stations Controller Helpers
+  def user_coordinates
+    { format: 'json', latitude: 32.715736, longitude: -117.161087 }
   end
 end
